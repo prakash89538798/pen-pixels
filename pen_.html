@@ -1,0 +1,944 @@
+<!-- <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacBook Pro - Mac Does That - Apple</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Custom Apple Architectural System Styles */
+        :root {
+            --sf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --apple-bezier: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            font-family: var(--sf-font);
+            background-color: #000000;
+            color: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .apple-transition {
+            transition: all 0.4s var(--apple-bezier);
+        }
+
+        /* Hide Scrollbar for Slider Panels */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Dynamic Typography Clamp Implementations */
+        .hero-title {
+            font-size: clamp(48px, 8vw, 80px);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+        }
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.08;
+            letter-spacing: -0.003em;
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f7] text-[#1d1d1f]">
+
+    <nav class="sticky top-0 z-50 h-[48px] border-b border-[#d2d2d7] bg-[#f5f5f7]/80 backdrop-blur-[20px] apple-transition">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex items-center justify-between">
+            <div class="text-[21px] font-semibold tracking-tight text-[#1d1d1f]">
+                <a href="#" class="hover:opacity-80 apple-transition">MacBook Pro</a>
+            </div>
+            <div class="flex items-center space-x-6 text-[12px] text-[#6e6e73]">
+                <a href="#" class="text-[#1d1d1f] font-normal hover:text-[#0066cc] apple-transition">Overview</a>
+                <a href="#" class="hover:text-[#0066cc] apple-transition hidden sm:inline">Tech Specs</a>
+                <a href="#" class="hover:text-[#0066cc] apple-transition hidden sm:inline">Compare</a>
+                <a href="#" class="hover:text-[#0066cc] apple-transition">Switch from PC</a>
+                <a href="#" class="bg-[#0066cc] text-white px-3 py-1 rounded-full text-[12px] font-normal hover:bg-[#0077ed] apple-transition">Buy</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-[980px] mx-auto px-10 pt-[120px] pb-[80px] text-center bg-[#f5f5f7]">
+        <h1 class="hero-title font-bold text-[#1d1d1f] tracking-tight mb-6">
+            Mac <span class="text-[#6e6e73]">does that.</span>
+        </h1>
+        <p class="max-w-[600px] mx-auto text-[17px] sm:text-[21px] leading-relaxed font-normal text-[#6e6e73] tracking-wide">
+            Never used a Mac? No problem. Mac is engineered to be incredibly easy to learn, phenomenally powerful, and completely seamless with your iPhone.
+        </p>
+    </header>
+
+    <section class="max-w-[1024px] mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white rounded-[28px] p-8 shadow-sm">
+            <div class="lg:col-span-5 flex flex-col justify-center space-y-4 border-b lg:border-b-0 lg:border-r border-[#d2d2d7] pb-6 lg:pb-0 lg:pr-8">
+                <button onclick="switchTab('tab-setup', this)" class="tab-btn w-full text-left p-4 rounded-xl bg-[#f5f5f7] border-l-4 border-[#0066cc] apple-transition">
+                    <span class="block text-[14px] font-medium text-[#6e6e73] uppercase tracking-wider mb-1">Setup</span>
+                    <span class="text-[19px] font-semibold text-[#1d1d1f]">Can I transfer my stuff?</span>
+                </button>
+                <button onclick="switchTab('tab-ai', this)" class="tab-btn w-full text-left p-4 rounded-xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[14px] font-medium text-[#6e6e73] uppercase tracking-wider mb-1">Apple Intelligence</span>
+                    <span class="text-[19px] font-semibold text-[#1d1d1f]">Can I use Apple Intelligence on my Mac?</span>
+                </button>
+                <button onclick="switchTab('tab-apps', this)" class="tab-btn w-full text-left p-4 rounded-xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[14px] font-medium text-[#6e6e73] uppercase tracking-wider mb-1">Compatibility</span>
+                    <span class="text-[19px] font-semibold text-[#1d1d1f]">Do apps from my PC work on Mac?</span>
+                </button>
+                <button onclick="switchTab('tab-ecosystem', this)" class="tab-btn w-full text-left p-4 rounded-xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[14px] font-medium text-[#6e6e73] uppercase tracking-wider mb-1">Mac + iPhone</span>
+                    <span class="text-[19px] font-semibold text-[#1d1d1f]">How does Mac work with my iPhone?</span>
+                </button>
+            </div>
+
+            <div class="lg:col-span-7 flex flex-col justify-center min-h-[320px] px-4 relative overflow-hidden">
+                <div id="tab-setup" class="tab-content apple-transition opacity-100 scale-100 block">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f] mb-4">Yes. Setup Assistant does it for you.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed mb-6">When you turn on your new Mac, Migration Assistant helps you securely copy all your documents, user accounts, internet settings, passwords, and favorite apps over from your old Windows PC automatically.</p>
+                    <div class="h-4 w-full bg-gradient-to-r from-[#0066cc] to-[#54a4ff] rounded-full animate-pulse"></div>
+                </div>
+                <div id="tab-ai" class="tab-content apple-transition opacity-0 scale-95 hidden">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f] mb-4">Built directly into the core system.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed mb-6">Apple Intelligence helps you write, express yourself, and get things done effortlessly. It draws on your personal context while maintaining absolute, ground-breaking cryptographic user privacy.</p>
+                    <div class="h-12 w-32 rounded-xl bg-gradient-to-tr from-[#ff453a] via-[#bf5af2] to-[#0a84ff] opacity-80 blur-sm"></div>
+                </div>
+                <div id="tab-apps" class="tab-content apple-transition opacity-0 scale-95 hidden">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f] mb-4">Your essential tools run natively.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed mb-6">Microsoft 365, Adobe Creative Cloud, Zoom, Google Workspace, and thousands of critical productivity platforms operate seamlessly and faster than ever on advanced Apple Silicon architecture.</p>
+                    <div class="grid grid-cols-4 gap-4 text-center text-xs font-semibold text-[#6e6e73]">
+                        <div class="p-3 bg-[#f5f5f7] rounded-lg border border-[#d2d2d7]">Word</div>
+                        <div class="p-3 bg-[#f5f5f7] rounded-lg border border-[#d2d2d7]">Excel</div>
+                        <div class="p-3 bg-[#f5f5f7] rounded-lg border border-[#d2d2d7]">Photoshop</div>
+                        <div class="p-3 bg-[#f5f5f7] rounded-lg border border-[#d2d2d7]">Slack</div>
+                    </div>
+                </div>
+                <div id="tab-ecosystem" class="tab-content apple-transition opacity-0 scale-95 hidden">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f] mb-4">Like they were made for each other.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed mb-6">Answer calls or text directly from your Mac. Copy images or text on your iPhone and paste instantly onto your Mac desktop via a shared, secure clipboard.</p>
+                    <span class="inline-flex items-center text-[#0066cc] font-medium hover:underline cursor-pointer">See how continuity works &gt;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1260px] mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="section-title font-bold text-[#1d1d1f] mb-6">The Marvels of Mac.</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="px-5 py-2 rounded-full bg-[#1d1d1f] text-white text-[14px] font-medium apple-transition">All Features</button>
+                <button class="px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Performance</button>
+                <button class="px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Battery Life</button>
+                <button class="px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Security</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="md:col-span-7 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-sm overflow-hidden group">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">M5 Processing Power</span>
+                    <h3 class="text-[32px] font-bold tracking-tight text-[#1d1d1f] mt-2 mb-4">Multitask.<br>Mega fast.</h3>
+                </div>
+                <p class="text-[#6e6e73] text-[17px] max-w-[400px]">From rendering complex 3D timeline matrices to slicing multi-stream 8K video feeds, Apple Silicon runs circles around baseline chips without breaking a sweat.</p>
+            </div>
+
+            <div class="md:col-span-5 bg-gradient-to-br from-[#1d1d1f] to-[#000000] text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-sm relative overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(191,90,242,0.15),transparent_50%)]"></div>
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#86868b]">Next-Gen Neural System</span>
+                    <h3 class="text-[32px] font-bold tracking-tight text-white mt-2 mb-4">Apple Intelligence.</h3>
+                </div>
+                <p class="text-[#86868b] text-[17px] relative z-10">Deep language models meet world-class privacy systems to accelerate tasks while safeguarding personal architecture keys.</p>
+            </div>
+
+            <div class="md:col-span-4 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[340px] shadow-sm">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">Power Efficiency Matrix</span>
+                    <h3 class="text-[72px] font-extrabold tracking-tighter text-[#1d1d1f] mt-4 leading-none">24 hr</h3>
+                    <p class="text-[19px] font-semibold text-[#1d1d1f] mt-2">Up to 24 hours of battery life.</p>
+                </div>
+                <p class="text-[#6e6e73] text-[15px]">Go cordless from dawn till deep into tomorrow. Efficiency that redefines physics maps.</p>
+            </div>
+
+            <div class="md:col-span-4 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[340px] shadow-sm">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">Privacy</span>
+                    <h3 class="text-[28px] font-bold tracking-tight text-[#1d1d1f] mt-2 mb-2">Your business is nobody else's.</h3>
+                </div>
+                <p class="text-[#6e6e73] text-[16px]">Hardware-encrypted FileVault setups, structural Secure Enclave matrices, and Touch ID parameters keep data natively armored against malicious networks.</p>
+            </div>
+
+            <div class="md:col-span-4 bg-[#1d1d1f] text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[340px] shadow-sm relative overflow-hidden">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#86868b]">Liquid Retina XDR</span>
+                    <h3 class="text-[28px] font-bold tracking-tight text-white mt-2 mb-2">Brilliance.<br>On display.</h3>
+                </div>
+                <p class="text-[#86868b] text-[16px]">1,600 nits of peak brightness with deep, high-contrast dynamic ratios that breathe vivid realism into graphics architectures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1024px] mx-auto px-6 py-16">
+        <h2 class="text-center section-title font-bold text-[#1d1d1f] mb-12">Built to last. Priced to match.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#ffffff] border border-[#d2d2d7]/50 rounded-[24px] p-8 flex flex-col justify-between min-h-[260px] apple-transition hover:shadow-md">
+                <div>
+                    <h3 class="text-[22px] font-semibold text-[#1d1d1f] mb-3">Unibody Aluminium Durability</h3>
+                    <p class="text-[#6e6e73] text-[16px] leading-relaxed">Machined from 100% recycled structural aluminum, Mac frames are tested to weather years of heavy-duty transport and workflow strain.</p>
+                </div>
+                <a href="#" class="text-[#0066cc] font-medium text-[16px] hover:underline inline-flex items-center mt-4">Learn about Apple materials &gt;</a>
+            </div>
+
+            <div class="bg-[#ffffff] border border-[#d2d2d7]/50 rounded-[24px] p-8 flex flex-col justify-between min-h-[260px] apple-transition hover:shadow-md">
+                <div>
+                    <h3 class="text-[22px] font-semibold text-[#1d1d1f] mb-3">Trade In and Trade Up</h3>
+                    <p class="text-[#6e6e73] text-[16px] leading-relaxed">Exchange your current eligible PC or Mac computer layout for high-value immediate credits toward your next custom system purchase.</p>
+                </div>
+                <a href="#" class="text-[#0066cc] font-medium text-[16px] hover:underline inline-flex items-center mt-4">Get your custom evaluation &gt;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[800px] mx-auto px-6 py-16">
+        <h2 class="section-title font-bold text-[#1d1d1f] text-center mb-12">Questions? Answers.</h2>
+        <div class="border-t border-[#d2d2d7] divide-y divide-[#d2d2d7]">
+            
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">What's it like to switch from Windows to Mac?</span>
+                    <span class="transform transition-transform duration-300 text-2xl text-[#6e6e73] font-light font-mono">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            It's remarkably straightforward. Your current files maps, emails, system documents, and desktop folders map beautifully using the Migration Assistant app. Keyboard configuration jumps feel intuitive within your first afternoon of active workspace immersion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">How do I right-click on a Mac?</span>
+                    <span class="transform transition-transform duration-300 text-2xl text-[#6e6e73] font-light font-mono">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            Simply tap with two fingers on your expansive Multi-Touch trackpad surface or hold down the Control key while clicking with your primary layout click parameters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">How does macOS work?</span>
+                    <span class="transform transition-transform duration-300 text-2xl text-[#6e6e73] font-light font-mono">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            macOS is the secure operating framework running every Mac engine. Built around highly legible design languages, it includes the Finder system matrix to organize files, built-in productivity apps, and native protection shields.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#ffffff] overflow-hidden">
+        <div class="max-w-[1260px] mx-auto px-6">
+            <h2 class="section-title font-bold text-[#1d1d1f] text-center mb-8">There's a Mac for everyone.</h2>
+            
+            <div class="flex justify-center space-x-6 border-b border-[#d2d2d7] max-w-[400px] mx-auto mb-12 pb-3">
+                <button class="text-[16px] font-semibold text-[#1d1d1f] border-b-2 border-[#1d1d1f] pb-3">Laptops</button>
+                <button class="text-[16px] font-medium text-[#6e6e73] hover:text-[#1d1d1f] pb-3 apple-transition">Desktops</button>
+                <button class="text-[16px] font-medium text-[#6e6e73] hover:text-[#1d1d1f] pb-3 apple-transition">Displays</button>
+            </div>
+
+            <div class="flex overflow-x-auto gap-8 pb-8 px-4 no-scrollbar snap-x snap-mandatory">
+                
+                <div class="w-[320px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#bf5af2] bg-[#bf5af2]/10 px-2 py-0.5 rounded">New</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-3">MacBook Air 13”</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">Strikingly thin. Phenomenally fast.</p>
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-xs">M5 Chip</div>
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#2e3033] border border-white" title="Midnight"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#e3e4e5] border border-white" title="Silver"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#f0e2d3] border border-white" title="Starlight"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[13px] text-[#6e6e73]">From</p>
+                        <p class="text-[19px] font-bold text-[#1d1d1f]">₹1,14,900.00*</p>
+                        <p class="text-[12px] text-[#6e6e73] mt-0.5">Calculated credit configurations available.</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Buy</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[320px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#6e6e73] bg-black/5 px-2 py-0.5 rounded">Pro Power</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-3">MacBook Pro 14”</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">A mind-blowing absolute powerhouse.</p>
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-xs">M5 Pro or M5 Max</div>
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#1d1d1f] border border-white" title="Space Black"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#e3e4e5] border border-white" title="Silver"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[13px] text-[#6e6e73]">From</p>
+                        <p class="text-[19px] font-bold text-[#1d1d1f]">₹1,69,900.00*</p>
+                        <p class="text-[12px] text-[#6e6e73] mt-0.5">Calculated credit configurations available.</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Buy</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[320px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#bf5af2] bg-[#bf5af2]/10 px-2 py-0.5 rounded">New Design</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-3">Mac Pro Studio</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">Ultimate configuration deployment matrix.</p>
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-xs">M5 Ultra Extreme</div>
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#e3e4e5] border border-white" title="Silver"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[13px] text-[#6e6e73]">From</p>
+                        <p class="text-[19px] font-bold text-[#1d1d1f]">₹3,99,900.00*</p>
+                        <p class="text-[12px] text-[#6e6e73] mt-0.5">Enterprise terms available.</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Buy</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#f5f5f7] text-[#6e6e73] text-[12px] border-t border-[#d2d2d7] mt-12 py-12">
+        <div class="max-w-[980px] mx-auto px-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-b border-[#d2d2d7] pb-10 mb-8">
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Monthly payment options</h4>
+                    <p class="leading-relaxed">Get instantly approved term plans offering no-cost EMI structures across major banking partner layouts.</p>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Save with education pricing</h4>
+                    <p class="leading-relaxed">Special baseline rate maps are available for current university students, faculty members, and researchers.</p>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Customise Your Mac</h4>
+                    <p class="leading-relaxed">Configure extra unified memory structures, accelerated processing cores, and enterprise solid-state setups.</p>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Personal Setup</h4>
+                    <p class="leading-relaxed">Schedule a safe, dedicated one-on-one virtual session with an Apple Specialist to learn OS configurations.</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 leading-normal border-b border-[#d2d2d7] pb-8 mb-8 text-[#86868b]">
+                <p>* Testing conducted by Apple in September 2025 using pre-production system setups containing custom software and battery matrix layers. Actual performance shifts vary depending on system loading metrics.</p>
+                <p>1. Apple Intelligence metrics are systematically available inside regional configurations across primary international market parameters upon network activation cycles.</p>
+                <p>Terms and conditions apply for consumer finance products. Trade-in credit approximations depend heavily on condition appraisals verified during system configuration intakes.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between text-[#86868b]">
+                <p>Copyright © 2026 Apple Inc. All rights reserved.</p>
+                <div class="flex flex-wrap space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f]">Privacy Policy</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f]">Terms of Use</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f]">Sales Policy</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f]">Legal & Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switcher Controller Logic
+        function switchTab(tabId, targetBtn) {
+            // Fetch and cycle all visual content blocks
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('opacity-0', 'scale-95');
+                content.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => content.classList.add('hidden'), 150);
+            });
+
+            // Cycle side button navigation parameters
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'border-[#0066cc]', 'bg-[#f5f5f7]');
+                btn.classList.add('border-transparent', 'hover:bg-[#f5f5f7]/60');
+            });
+
+            // Target individual active selection
+            setTimeout(() => {
+                const activeTarget = document.getElementById(tabId);
+                activeTarget.classList.remove('hidden');
+                setTimeout(() => {
+                    activeTarget.classList.add('opacity-100', 'scale-100');
+                    activeTarget.classList.remove('opacity-0', 'scale-95');
+                }, 50);
+            }, 160);
+
+            targetBtn.classList.add('bg-[#f5f5f7]', 'border-[#0066cc]');
+            targetBtn.classList.remove('border-transparent', 'hover:bg-[#f5f5f7]/60');
+        }
+
+        // Accordion Controller Logic
+        function toggleAccordion(button) {
+            const contentContainer = button.nextElementSibling;
+            const toggleIcon = button.querySelector('span:last-child');
+            
+            if (contentContainer.classList.contains('grid-rows-[0fr]')) {
+                // Open panel logic via native css grid tracks transition parameters
+                contentContainer.classList.remove('grid-rows-[0fr]', 'opacity-0');
+                contentContainer.classList.add('grid-rows-[1fr]', 'opacity-100');
+                toggleIcon.style.transform = 'rotate(45deg)';
+            } else {
+                // Collapse panel logic
+                contentContainer.classList.remove('grid-rows-[1fr]', 'opacity-100');
+                contentContainer.classList.add('grid-rows-[0fr]', 'opacity-0');
+                toggleIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen & Pixel — Crafting Legacies, Not Just Designs</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        :root {
+            --sf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --apple-bezier: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            font-family: var(--sf-font);
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .apple-transition {
+            transition: all 0.4s var(--apple-bezier);
+        }
+
+        .hero-title {
+            font-size: clamp(46px, 7.5vw, 80px);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4.5vw, 48px);
+            line-height: 1.08;
+            letter-spacing: -0.003em;
+        }
+
+        /* Hide Scrollbars for Product Carousels */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism Navigation Layer */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f7]">
+
+    <!-- SECTION 1: Local Navigation Bar (Sticky Layer) -->
+    <nav class="sticky top-0 z-50 h-[48px] border-b border-[#d2d2d7] nav-blur apple-transition">
+        <div class="max-w-[1260px] mx-auto h-full px-6 md:px-10 flex items-center justify-between">
+            <div class="text-[19px] font-bold tracking-tight text-[#1d1d1f]">
+                <a href="#" class="hover:opacity-80 apple-transition">Pen<span class="text-[#6e6e73] font-medium">&</span>Pixel</a>
+            </div>
+            <div class="flex items-center space-x-6 text-[12px]">
+                <a href="#about" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition">About</a>
+                <a href="#services" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">Services</a>
+                <a href="#portfolio" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">Portfolio</a>
+                <a href="#faq" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">FAQ</a>
+                <a href="#cta" class="bg-[#0066cc] text-white px-3 py-1 rounded-full text-[12px] font-normal hover:bg-[#0077ed] apple-transition tracking-normal">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 2: Hero Intro -->
+    <header class="max-w-[1260px] mx-auto px-6 md:px-10 pt-[120px] pb-[80px] text-center">
+        <h1 class="hero-title font-bold text-[#1d1d1f] tracking-tight mb-6">
+            Elevate Your Brand. <span class="text-[#6e6e73]">Dominate Your Market.</span>
+        </h1>
+        <p class="max-w-[680px] mx-auto text-[17px] sm:text-[21px] leading-[1.4] font-normal text-[#6e6e73] tracking-normal mb-8">
+            We transform ambitious visions into iconic brands and digital experiences that captivate, convert, and command attention. Your next chapter of growth starts here.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#cta" class="bg-[#0066cc] text-white px-6 py-3 rounded-full text-[14px] font-medium hover:bg-[#0077ed] apple-transition">Schedule Your Brand Transformation</a>
+            <a href="#portfolio" class="bg-white text-[#0066cc] border border-[#0066cc] px-6 py-3 rounded-full text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Explore Our Work</a>
+        </div>
+    </header>
+
+    <!-- SECTION 3: The Interrogative "Tab/Accordion" Grid -->
+    <section class="max-w-[1260px] mx-auto px-6 md:px-10 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white rounded-[28px] p-8 md:p-12 shadow-xs">
+            
+            <!-- Left Interrogative Selection Side -->
+            <div class="lg:col-span-5 flex flex-col justify-center space-y-4 border-b lg:border-b-0 lg:border-r border-[#d2d2d7] pb-6 lg:pb-0 lg:pr-8">
+                <button onclick="switchTab('tab-data', this)" class="tab-btn w-full text-left p-5 rounded-2xl bg-[#f5f5f7] border-l-4 border-[#0066cc] apple-transition">
+                    <span class="block text-[11px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-1">Onboarding</span>
+                    <span class="text-[18px] font-semibold text-[#1d1d1f]">Can I transfer my existing data?</span>
+                </button>
+                <button onclick="switchTab('tab-ai', this)" class="tab-btn w-full text-left p-5 rounded-2xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[11px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-1">Intelligence</span>
+                    <span class="text-[18px] font-semibold text-[#1d1d1f]">How does the built-in AI assistant help?</span>
+                </button>
+                <button onclick="switchTab('tab-tools', this)" class="tab-btn w-full text-left p-5 rounded-2xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[11px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-1">Integrations</span>
+                    <span class="text-[18px] font-semibold text-[#1d1d1f]">Do my everyday workflow tools integrate?</span>
+                </button>
+                <button onclick="switchTab('tab-learning', this)" class="tab-btn w-full text-left p-5 rounded-2xl hover:bg-[#f5f5f7]/60 border-l-4 border-transparent apple-transition">
+                    <span class="block text-[11px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-1">Usability</span>
+                    <span class="text-[18px] font-semibold text-[#1d1d1f]">Is Pen&Pixel easy to learn?</span>
+                </button>
+            </div>
+
+            <!-- Right Visual Component Display Side -->
+            <div class="lg:col-span-7 flex flex-col justify-center min-h-[380px] lg:pl-8 relative overflow-hidden">
+                
+                <!-- Tab Item 1 -->
+                <div id="tab-data" class="tab-content apple-transition opacity-100 scale-100 block space-y-6">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f]">Yes. Seamlessly imports your workspace in seconds.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed">Our automated ingestion engine maps legacy formats, structural CSV databases, and markdown files directly into clean system tokens without losing styling rules or asset linkages.</p>
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Data Visualization" class="w-full h-48 object-cover rounded-xl shadow-xs">
+                </div>
+
+                <!-- Tab Item 2 -->
+                <div id="tab-ai" class="tab-content apple-transition opacity-0 scale-95 hidden space-y-6">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f]">Context-aware models directly in your canvas.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed">The integrated assistant parses local data matrices to generate precise layout documentation, localized brand assets, and structural copywriting changes in real-time, safely encrypted within your sandbox.</p>
+                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80" alt="AI Neural Connections" class="w-full h-48 object-cover rounded-xl shadow-xs">
+                </div>
+
+                <!-- Tab Item 3 -->
+                <div id="tab-tools" class="tab-content apple-transition opacity-0 scale-95 hidden space-y-6">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f]">Natively wired for the platforms you trust.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed">Connect directly to Figma, GitHub, Notion, Slack, and cloud storage systems via secure REST environments. Updates sync symmetrically across all integrated endpoints.</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="p-4 bg-[#f5f5f7] rounded-xl border border-[#d2d2d7] text-center font-medium text-[14px]">Figma Link</div>
+                        <div class="p-4 bg-[#f5f5f7] rounded-xl border border-[#d2d2d7] text-center font-medium text-[14px]">GitHub Sync</div>
+                        <div class="p-4 bg-[#f5f5f7] rounded-xl border border-[#d2d2d7] text-center font-medium text-[14px]">API Engine</div>
+                    </div>
+                </div>
+
+                <!-- Tab Item 4 -->
+                <div id="tab-learning" class="tab-content apple-transition opacity-0 scale-95 hidden space-y-6">
+                    <h3 class="text-[28px] font-semibold tracking-tight text-[#1d1d1f]">Completely intuitive layout infrastructure.</h3>
+                    <p class="text-[#6e6e73] text-[17px] leading-relaxed">If you know how to use standard cursor controls, you can instantly master Pen&Pixel. Contextual tooltips, simple keyboard shortcuts, and clean menus guide you forward.</p>
+                    <img src="https://images.unsplash.com/photo-1541462608141-ad4979e408c9?auto=format&fit=crop&w=800&q=80" alt="UI Design Screen" class="w-full h-48 object-cover rounded-xl shadow-xs">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: "The Marvels of Pen&Pixel" Mosaic Feature Grid -->
+    <section class="max-w-[1260px] mx-auto px-6 md:px-10 py-16">
+        <div class="text-center mb-12">
+            <h2 class="section-title font-bold text-[#1d1d1f] mb-6">The Marvels of Pen&Pixel.</h2>
+            
+            <!-- Context Filter Pills -->
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="filterGrid('all', this)" class="grid-filter-btn px-5 py-2 rounded-full bg-[#1d1d1f] text-white text-[14px] font-medium apple-transition">All Ecosystems</button>
+                <button onclick="filterGrid('perf', this)" class="grid-filter-btn px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Performance</button>
+                <button onclick="filterGrid('intel', this)" class="grid-filter-btn px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Intelligence</button>
+                <button onclick="filterGrid('sec', this)" class="grid-filter-btn px-5 py-2 rounded-full bg-white text-[#1d1d1f] border border-[#d2d2d7] text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Security</button>
+            </div>
+        </div>
+
+        <!-- Bento-Box Configuration Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <!-- Card A: Multitask. Mega Fast. (Performance) -->
+            <div data-cat="perf" class="grid-card md:col-span-7 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[400px] shadow-xs relative overflow-hidden group apple-transition">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">Hardware Accelerated rendering</span>
+                    <h3 class="text-[32px] font-bold tracking-tight text-[#1d1d1f] mt-2 mb-4">Multitask.<br>Mega fast.</h3>
+                </div>
+                <div class="absolute bottom-0 right-0 w-1/2 h-48 opacity-20 group-hover:opacity-40 apple-transition">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=500&q=80" alt="Abstract render" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[#6e6e73] text-[17px] max-w-[420px] relative z-10">Our dynamic layout engine handles thousand-layer canvas setups without frame drops, using customized WebGL render layers built for speed.</p>
+            </div>
+
+            <!-- Card B: Built for Modern AI (Intelligence) -->
+            <div data-cat="intel" class="grid-card md:col-span-5 bg-gradient-to-br from-[#1d1d1f] to-[#000000] text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[400px] shadow-xs relative overflow-hidden apple-transition">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,102,204,0.25),transparent_60%)]"></div>
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#86868b]">Core Neural Pipeline</span>
+                    <h3 class="text-[32px] font-bold tracking-tight text-white mt-2 mb-4">Built for modern AI.</h3>
+                </div>
+                <p class="text-[#86868b] text-[17px] relative z-10">Automate layout localization, alternative formatting layouts, and tonal voice transformations natively inside our visual canvas nodes.</p>
+            </div>
+
+            <!-- Card C: Security Matrix (Security) -->
+            <div data-cat="sec" class="grid-card md:col-span-4 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[360px] shadow-xs apple-transition">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">Zero-Trust Architecture</span>
+                    <h3 class="text-[28px] font-bold tracking-tight text-[#1d1d1f] mt-3 mb-2">Your data is nobody else's.</h3>
+                </div>
+                <p class="text-[#6e6e73] text-[15px] leading-relaxed">Enterprise designs, sensitive consumer files, and brand parameters are securely guarded with client-side cryptographic signatures.</p>
+            </div>
+
+            <!-- Card D: Performance Efficiency (Performance) -->
+            <div data-cat="perf" class="grid-card md:col-span-4 bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[360px] shadow-xs relative overflow-hidden apple-transition">
+                <div>
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#6e6e73]">Cloud Synthesis Scale</span>
+                    <h3 class="text-[72px] font-extrabold tracking-tighter text-[#1d1d1f] mt-4 leading-none">99.9%</h3>
+                    <p class="text-[18px] font-semibold text-[#1d1d1f] mt-2">Operational availability metrics.</p>
+                </div>
+                <p class="text-[#6e6e73] text-[15px] leading-relaxed">Continuous delivery pipelines back your asset delivery protocols, keeping updates real-time globally.</p>
+            </div>
+
+            <!-- Card E: High Contrast Visuals (Design Ecosystem) -->
+            <div data-cat="all" class="grid-card md:col-span-4 bg-[#1d1d1f] text-white rounded-[28px] p-8 flex flex-col justify-between min-h-[360px] shadow-xs relative overflow-hidden apple-transition">
+                <div class="absolute inset-0 opacity-40">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=500&q=80" alt="Lines" class="w-full h-full object-cover">
+                </div>
+                <div class="relative z-10">
+                    <span class="text-[12px] font-semibold uppercase tracking-wider text-[#86868b]">Sub-pixel Accuracy</span>
+                    <h3 class="text-[28px] font-bold tracking-tight text-white mt-2 mb-2">Brilliance.<br>On display.</h3>
+                </div>
+                <p class="text-[#86868b] text-[15px] relative z-10 leading-relaxed">Every generated spacing parameter maps strictly onto professional engineering frameworks down to the micro-unit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Value & Reliability Grid -->
+    <section class="max-w-[1260px] mx-auto px-6 md:px-10 py-16">
+        <h2 class="text-center section-title font-bold text-[#1d1d1f] mb-12">Engineered for teams who plan ahead.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="bg-[#f5f5f7] border border-[#d2d2d7]/60 rounded-[28px] p-8 flex flex-col justify-between min-h-[280px] apple-transition hover:shadow-sm bg-white">
+                <div>
+                    <h3 class="text-[24px] font-semibold text-[#1d1d1f] mb-3">Enterprise Structural Scaling</h3>
+                    <p class="text-[#6e6e73] text-[16px] leading-relaxed">Deploy specialized deployment rules, localized workspace partitioning, custom single sign-on access directories, and individual administrative guardrails safely across global teams.</p>
+                </div>
+                <a href="#" class="text-[#0066cc] font-medium text-[16px] hover:underline inline-flex items-center mt-6">Explore Enterprise options &gt;</a>
+            </div>
+
+            <div class="bg-[#f5f5f7] border border-[#d2d2d7]/60 rounded-[28px] p-8 flex flex-col justify-between min-h-[280px] apple-transition hover:shadow-sm bg-white">
+                <div>
+                    <h3 class="text-[24px] font-semibold text-[#1d1d1f] mb-3">White-Glove Support Engineering</h3>
+                    <p class="text-[#6e6e73] text-[16px] leading-relaxed">Get immediate technical advisory response parameters from senior cloud infrastructure systems developers directly inside your private workspace instance.</p>
+                </div>
+                <a href="#" class="text-[#0066cc] font-medium text-[16px] hover:underline inline-flex items-center mt-6">Review service tier SLAs &gt;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: FAQ Accordion System -->
+    <section class="max-w-[840px] mx-auto px-6 py-16">
+        <h2 class="section-title font-bold text-[#1d1d1f] text-center mb-12">Questions? Answers.</h2>
+        <div class="border-t border-[#d2d2d7] divide-y divide-[#d2d2d7]">
+            
+            <!-- Accordion Item 1 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">What makes Pen&Pixel different from standard layout editors?</span>
+                    <span class="transform transition-transform duration-300 text-[24px] text-[#6e6e73] font-light font-mono select-none">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            Pen&Pixel is built entirely around production-grade engineering structures. Instead of exporting flat image assets, every single modification simultaneously builds tokenized layouts, clear semantic markup, and clean interface structures optimized for digital engines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">Can we lock localized custom components?</span>
+                    <span class="transform transition-transform duration-300 text-[24px] text-[#6e6e73] font-light font-mono select-none">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            Absolutely. Our centralized component registries allow teams to build structural rules, lock responsive grid parameters, and define dynamic token arrays that ensure safe updates across every single nested branch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 3 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                    <span class="text-[19px] sm:text-[22px] font-semibold text-[#1d1d1f] tracking-tight pr-4">How does licensing operate for scaling development agencies?</span>
+                    <span class="transform transition-transform duration-300 text-[24px] text-[#6e6e73] font-light font-mono select-none">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="pt-4 text-[#6e6e73] text-[16px] leading-relaxed">
+                            We provide simple, usage-based compute seats alongside flexible organizational licenses. You only pay for active configuration canvases, while read-only reviewer seats remain free across all deployment zones.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: The Product Lineup Slider -->
+    <section class="py-16 bg-white overflow-hidden">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            <h2 class="section-title font-bold text-[#1d1d1f] text-center mb-12">Choose your development engine tier.</h2>
+            
+            <!-- Horizontal Carousel Track -->
+            <div class="flex overflow-x-auto gap-8 pb-8 px-2 no-scrollbar snap-x snap-mandatory">
+                
+                <!-- Card 1: Core Tier -->
+                <div class="w-[340px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#bf5af2] bg-[#bf5af2]/10 px-2.5 py-0.5 rounded-full">New Release</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-4">Pen&Pixel Core</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">Perfect for individual developers and creators.</p>
+                        
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.05)]">M5 Ready Engine</div>
+                        
+                        <!-- Configuration Themes Swatches -->
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#1d1d1f] border border-white cursor-pointer shadow-xs" title="Dark Slate"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#e3e4e5] border border-white cursor-pointer shadow-xs" title="Chalk White"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#0066cc] border border-white cursor-pointer shadow-xs" title="System Blue"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[12px] text-[#6e6e73]">Starting from</p>
+                        <p class="text-[20px] font-bold text-[#1d1d1f]">₹4,900.00 / mo.*</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Buy Now</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Professional Studio Tier -->
+                <div class="w-[340px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#0066cc] bg-[#0066cc]/10 px-2.5 py-0.5 rounded-full">Most Popular</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-4">Pen&Pixel Studio</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">Accelerated team workflows with analytics.</p>
+                        
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.05)]">Multi-Node Pipeline</div>
+                        
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#1d1d1f] border border-white cursor-pointer shadow-xs" title="Dark Slate"></span>
+                            <span class="w-4 h-4 rounded-full bg-[#e3e4e5] border border-white cursor-pointer shadow-xs" title="Chalk White"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[12px] text-[#6e6e73]">Starting from</p>
+                        <p class="text-[20px] font-bold text-[#1d1d1f]">₹12,500.00 / mo.*</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Buy Now</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Custom Architecture Tier -->
+                <div class="w-[340px] shrink-0 bg-[#f5f5f7] rounded-[24px] p-6 flex flex-col justify-between snap-start border border-transparent hover:border-[#d2d2d7] apple-transition">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#34c759] bg-[#34c759]/10 px-2.5 py-0.5 rounded-full">Custom Scale</span>
+                        <h3 class="text-[24px] font-bold text-[#1d1d1f] mt-4">Pen&Pixel Enterprise</h3>
+                        <p class="text-[14px] text-[#6e6e73] mt-1">Dedicated hosting arrays for heavy compliance.</p>
+                        
+                        <div class="mt-4 inline-block px-3 py-1 bg-white text-[13px] font-semibold text-[#1d1d1f] rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.05)]">Dedicated Compute Clusters</div>
+                        
+                        <div class="flex space-x-2 mt-6">
+                            <span class="w-4 h-4 rounded-full bg-[#1d1d1f] border border-white cursor-pointer shadow-xs" title="Dark Slate"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-[#d2d2d7]">
+                        <p class="text-[12px] text-[#6e6e73]">Custom Licensing</p>
+                        <p class="text-[20px] font-bold text-[#1d1d1f]">Contact Sales</p>
+                        <div class="flex items-center justify-between mt-6">
+                            <a href="#" class="bg-[#0066cc] text-white px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] apple-transition">Get Quote</a>
+                            <a href="#" class="text-[#0066cc] text-[14px] font-normal hover:underline">Learn more &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: System Footer -->
+    <footer class="bg-[#f5f5f7] text-[#6e6e73] text-[12px] border-t border-[#d2d2d7] py-12">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            
+            <!-- Structural Resource Directory Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-[#d2d2d7] pb-10 mb-8">
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Explore Ecosystem</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Pen&Pixel Engine</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Layout Sync Components</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Enterprise Node Clusters</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Pricing Models</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Integrations & Data</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Figma Plugin Bridge</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">GitHub Sync Action Nodes</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">REST Architecture Endpoints</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Data Migration Layer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Resources & Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Documentation Library</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Interactive Tutorials</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">SLA Incident Status</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Developer Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[#1d1d1f] font-semibold mb-3">Corporate Matrix</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">About Pen&Pixel</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Security Policies</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Career Postings</a></li>
+                        <li><a href="#" class="hover:text-[#1d1d1f] apple-transition">Press Kits</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footnote Disclosures -->
+            <div class="space-y-3 leading-normal border-b border-[#d2d2d7] pb-8 mb-8 text-[#86868b]">
+                <p>* Performance measurements derived using automated browser-cluster matrix evaluations running across simulated heavy canvas setups. Individual execution metrics vary heavily based on localized hardware architecture constraints.</p>
+                <p>1. Automated workspace migration systems execute secure operations using client-side verification engines. Absolute integration capabilities rely entirely on destination target configuration rules.</p>
+                <p>Terms, regional conditions, and regulatory compliance protocols apply for custom workspace data sandboxes.</p>
+            </div>
+
+            <!-- Copyright and Legal Links -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between text-[#86868b] gap-4">
+                <p>Copyright © 2026 Pen&Pixel Studio Inc. All rights reserved.</p>
+                <div class="flex flex-wrap gap-4 md:gap-6">
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f] apple-transition">Privacy Policy</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f] apple-transition">Terms of Use</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f] apple-transition">Data & Cookie Rules</a>
+                    <a href="#" class="hover:underline hover:text-[#1d1d1f] apple-transition">Regulatory Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Native Interaction Logic Layers -->
+    <script>
+        // SECTION 3: Interrogative Tab Component Controller
+        function switchTab(tabId, targetBtn) {
+            // Fade out and scale down active content pieces
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('opacity-0', 'scale-95');
+                content.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => content.classList.add('hidden'), 150);
+            });
+
+            // Revert layout button accents
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'border-[#0066cc]', 'bg-[#f5f5f7]');
+                btn.classList.add('border-transparent', 'hover:bg-[#f5f5f7]/60');
+            });
+
+            // Activating targeted tab content structures smoothly
+            setTimeout(() => {
+                const activeTarget = document.getElementById(tabId);
+                activeTarget.classList.remove('hidden');
+                setTimeout(() => {
+                    activeTarget.classList.add('opacity-100', 'scale-100');
+                    activeTarget.classList.remove('opacity-0', 'scale-95');
+                }, 50);
+            }, 160);
+
+            targetBtn.classList.add('bg-[#f5f5f7]', 'border-[#0066cc]');
+            targetBtn.classList.remove('border-transparent', 'hover:bg-[#f5f5f7]/60');
+        }
+
+        // SECTION 4: Bento Grid Category Filter Controller
+        function filterGrid(category, filterBtn) {
+            // Update filter button designs
+            document.querySelectorAll('.grid-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-1d1d1f', 'bg-[#1d1d1f]', 'text-white');
+                btn.classList.add('bg-white', 'text-[#1d1d1f]', 'border', 'border-[#d2d2d7]');
+            });
+
+            filterBtn.classList.remove('bg-white', 'text-[#1d1d1f]', 'border', 'border-[#d2d2d7]');
+            filterBtn.classList.add('bg-[#1d1d1f]', 'text-white');
+
+            // Handle visual filtering parameters on bento components
+            document.querySelectorAll('.grid-card').forEach(card => {
+                const cardCat = card.getAttribute('data-cat');
+                if (category === 'all' || cardCat === category || cardCat === 'all') {
+                    card.classList.remove('opacity-20', 'pointer-events-none');
+                } else {
+                    card.classList.add('opacity-20', 'pointer-events-none');
+                }
+            });
+        }
+
+        // SECTION 6: FAQ Accordion CSS Grid Expansion Track Controller
+        function toggleAccordion(button) {
+            const contentTrack = button.nextElementSibling;
+            const operationalIcon = button.querySelector('span:last-child');
+            
+            if (contentTrack.classList.contains('grid-rows-[0fr]')) {
+                // Expanding layout track parameters safely
+                contentTrack.classList.remove('grid-rows-[0fr]', 'opacity-0');
+                contentTrack.classList.add('grid-rows-[1fr]', 'opacity-100');
+                operationalIcon.style.transform = 'rotate(45deg)';
+            } else {
+                // Collapsing layout track parameters back safely
+                contentTrack.classList.remove('grid-rows-[1fr]', 'opacity-100');
+                contentTrack.classList.add('grid-rows-[0fr]', 'opacity-0');
+                operationalIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

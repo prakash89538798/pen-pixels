@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen & Pixel — Crafting Legacies, Not Just Designs</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        :root {
+            --sf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --apple-bezier: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            font-family: var(--sf-font);
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .apple-transition {
+            transition: all 0.4s var(--apple-bezier);
+        }
+
+        .hero-title {
+            font-size: clamp(46px, 7.5vw, 80px);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4.5vw, 48px);
+            line-height: 1.08;
+            letter-spacing: -0.003em;
+        }
+
+        /* Hide Scrollbars for Product Carousels */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism Navigation Layer */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animation Optimization */
+        .hero-title,
+        .hero-content,
+        .cta-button,
+        .service-card,
+        .process-step,
+        .portfolio-item,
+        .testimonial-card,
+        .benefit-card,
+        .why-choose-item,
+        .parallax-bg {
+            will-change: transform, opacity;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .hero-title,
+            .hero-content,
+            .cta-button,
+            .service-card,
+            .process-step,
+            .portfolio-item,
+            .testimonial-card,
+            .benefit-card,
+            .why-choose-item,
+            .parallax-bg {
+                will-change: auto;
+            }
+        }
+
+        /* Media Card Styling */
+        .media-thumb { height: 10rem; overflow: hidden; border-radius: 12px; }
+        .media-thumb img, .media-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .play-overlay { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+        .play-overlay .dot { width:72px; height:72px; border-radius:9999px; background: rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; }
+        .play-overlay .dot svg { width:28px; height:28px; color:white; }
+    </style>
+</head>
+<body class="bg-[#f5f5f7]">
+
+    <!-- SECTION 1: Local Navigation Bar (Sticky Layer) -->
+    <nav class="sticky top-0 z-50 h-[48px] border-b border-[#d2d2d7] nav-blur apple-transition">
+        <div class="max-w-[1260px] mx-auto h-full px-6 md:px-10 flex items-center justify-between">
+            <div class="text-[19px] font-bold tracking-tight text-[#1d1d1f]">
+                <a href="#" class="hover:opacity-80 apple-transition">Pen<span class="text-[#6e6e73] font-medium">&</span>Pixel</a>
+            </div>
+            <div class="flex items-center space-x-6 text-[12px]">
+                <a href="#about" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition">About</a>
+                <a href="#services" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">Services</a>
+                <a href="#portfolio" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">Portfolio</a>
+                <a href="#faq" class="text-[#6e6e73] hover:text-[#0066cc] apple-transition hidden sm:inline">FAQ</a>
+                <a href="#cta" class="bg-[#0066cc] text-white px-3 py-1 rounded-full text-[12px] font-normal hover:bg-[#0077ed] apple-transition tracking-normal">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 2: Hero Intro -->
+    <header class="max-w-[1260px] mx-auto px-6 md:px-10 pt-[120px] pb-[80px] text-center">
+        <h1 class="hero-title font-bold text-[#1d1d1f] tracking-tight mb-6">
+            Elevate Your Brand. <span class="text-[#6e6e73]">Dominate Your Market.</span>
+        </h1>
+        <p class="hero-content max-w-[680px] mx-auto text-[17px] sm:text-[21px] leading-[1.4] font-normal text-[#6e6e73] tracking-normal mb-8">
+            We transform ambitious visions into iconic brands and digital experiences that captivate, convert, and command attention. Your next chapter of growth starts here.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#cta" class="cta-button bg-[#0066cc] text-white px-6 py-3 rounded-full text-[14px] font-medium hover:bg-[#0077ed] apple-transition">Schedule Your Brand Transformation</a>
+            <a href="#portfolio" class="cta-button bg-white text-[#0066cc] border border-[#0066cc] px-6 py-3 rounded-full text-[14px] font-medium hover:bg-[#f5f5f7] apple-transition">Explore Our Work</a>
+        </div>
+    </header>
+
+    <!-- SECTION 3: About Us Section -->
+    <section id="about" class="bg-white py-20">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            <div class="max-w-[900px] mx-auto">
+                <h2 class="section-title font-bold text-[#1d1d1f] mb-8">Beyond Aesthetics: The Pen & Pixel Difference.</h2>
+                <p class="text-[17px] leading-[1.6] text-[#6e6e73] mb-8">In a world saturated with noise, standing out isn't just an advantage—it's a necessity. At Pen & Pixel, we are more than a creative agency; we are your strategic partners in carving out an undeniable presence. We believe that exceptional design is not merely about looking good; it's about intelligent strategy, meticulous execution, and measurable impact.</p>
+
+                <h3 class="text-[21px] font-semibold text-[#1d1d1f] mb-6">Why Choose Pen & Pixel:</h3>
+                
+                <div class="space-y-6 mb-12">
+                    <div class="why-choose-item border-l-4 border-[#0066cc] pl-6">
+                        <h4 class="text-[16px] font-semibold text-[#1d1d1f] mb-2">Strategic Visionaries</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">We don't just design; we strategize. Every pixel, every line of copy, is meticulously crafted to align with your business objectives and resonate deeply with your target audience. We translate your ambition into tangible results.</p>
+                    </div>
+
+                    <div class="why-choose-item border-l-4 border-[#0066cc] pl-6">
+                        <h4 class="text-[16px] font-semibold text-[#1d1d1f] mb-2">Uncompromising Quality</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Our commitment to excellence is unwavering. We deliver premium, bespoke solutions that reflect the caliber of your brand and set new industry benchmarks. Expect nothing less than perfection.</p>
+                    </div>
+
+                    <div class="why-choose-item border-l-4 border-[#0066cc] pl-6">
+                        <h4 class="text-[16px] font-semibold text-[#1d1d1f] mb-2">Results-Driven Partnership</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Your success is our metric. We focus on outcomes—increased conversions, enhanced brand loyalty, and accelerated growth—ensuring your investment yields significant returns. We build brands that don't just look good, they perform.</p>
+                    </div>
+
+                    <div class="why-choose-item border-l-4 border-[#0066cc] pl-6">
+                        <h4 class="text-[16px] font-semibold text-[#1d1d1f] mb-2">Holistic Creative Solutions</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">From the foundational brushstrokes of your logo to the intricate architecture of your website, we offer a seamless suite of services designed to create a cohesive, powerful brand narrative across all touchpoints.</p>
+                    </div>
+
+                    <div class="why-choose-item border-l-4 border-[#0066cc] pl-6">
+                        <h4 class="text-[16px] font-semibold text-[#1d1d1f] mb-2">Agile & Adaptive</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">The digital landscape evolves rapidly. We stay ahead of the curve, employing cutting-edge techniques and innovative approaches to keep your brand fresh, relevant, and always one step ahead of the competition.</p>
+                    </div>
+                </div>
+
+                <div class="text-center pt-6 border-t border-[#d2d2d7]">
+                    <p class="text-[16px] font-semibold text-[#1d1d1f] italic">We don't just build brands; we forge legacies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Services Grid -->
+    <section id="services" class="max-w-[1260px] mx-auto px-6 md:px-10 py-20">
+        <div class="text-center mb-12">
+            <h2 class="section-title font-bold text-[#1d1d1f] mb-6">Our Expertise: Igniting Your Brand's Potential.</h2>
+            <p class="max-w-[700px] mx-auto text-[17px] text-[#6e6e73]">From captivating digital storefronts to unforgettable brand identities, our bespoke creative solutions are engineered for impact and designed for growth.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Service 1: Website Design & Development -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?web-design,website" alt="Website design showcase" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Your Digital Flagship. Engineered for Conversion.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">Your website is more than an online brochure; it's your most powerful sales tool. We craft immersive, intuitive, and high-performing websites that not only look stunning but are meticulously optimized to convert visitors into loyal customers. We blend cutting-edge design with robust functionality to create digital experiences that drive engagement and deliver measurable ROI.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Where stunning design meets strategic performance.</p>
+            </div>
+
+            <!-- Service 2: Branding & Identity Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?branding,logo" alt="Branding identity" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Forge an Unforgettable Identity. Command Recognition.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">Your brand is your promise. We delve deep into your core values and aspirations to sculpt a distinctive brand identity that resonates, inspires, and endures. From iconic logos to comprehensive brand guidelines, we create a visual language that speaks volumes, builds trust, and sets you apart in a crowded marketplace.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Your brand, reimagined. Your legacy, defined.</p>
+            </div>
+
+            <!-- Service 3: Social Media Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?social-media,content" alt="Social media creatives" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Captivate Your Audience. Amplify Your Message.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">In the dynamic world of social media, compelling visuals are paramount. We design scroll-stopping creatives that cut through the noise, spark conversations, and build a vibrant community around your brand. Elevate your social presence with strategic, engaging content that converts followers into advocates.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Social by design. Impact by strategy.</p>
+            </div>
+
+            <!-- Service 4: Poster & Print Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?poster,print" alt="Poster and print design" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Tangible Impact. Unforgettable Impressions.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">From striking event posters to sophisticated marketing collateral, our print designs leave a lasting impression. We combine artistic flair with strategic messaging to create physical assets that reinforce your brand's premium stature and captivate your audience offline.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Print that speaks volumes.</p>
+            </div>
+
+            <!-- Service 5: Packaging Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?packaging,box" alt="Packaging design" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">The Unboxing Experience. Elevated.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">In the competitive retail landscape, packaging is your silent salesperson. We design packaging that not only protects your product but tells your brand story, excites your customers, and transforms a simple purchase into a memorable experience. Make every unboxing an event.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Packaging that sells itself.</p>
+            </div>
+
+            <!-- Service 6: UI/UX Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?ux,ui" alt="UI/UX design" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Seamless Experiences. Intuitive Interactions.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">We believe that exceptional user experience is the cornerstone of digital success. Our UI/UX design focuses on creating interfaces that are not only visually appealing but also incredibly intuitive and efficient, ensuring every interaction is a delight for your users.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Design that anticipates. Experience that delights.</p>
+            </div>
+
+            <!-- Service 7: Graphic Design -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?graphic-design,illustration" alt="Graphic design" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Visual Storytelling. Unrestricted Creativity.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">From infographics to presentations, our graphic design services bring your ideas to life with clarity, impact, and artistic precision. We translate complex concepts into compelling visuals that engage, inform, and persuade your audience across all platforms.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Ideas, beautifully visualized.</p>
+            </div>
+
+            <!-- Service 8: Marketing Assets -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?marketing,campaign" alt="Marketing assets" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Empower Your Campaigns. Drive Engagement.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">Fuel your marketing efforts with a suite of high-impact assets. We design everything from email templates and banner ads to brochures and pitch decks, ensuring your brand maintains a consistent, professional, and persuasive presence across all your campaigns.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Marketing, masterfully crafted.</p>
+            </div>
+
+            <!-- Service 9: Custom Creative Solutions -->
+            <div class="service-card bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[380px] shadow-xs hover:shadow-sm apple-transition border border-[#d2d2d7]/50">
+                <div class="media-thumb mb-6">
+                    <img src="https://source.unsplash.com/featured/?creative,studio" alt="Custom creative" loading="lazy">
+                </div>
+                <div>
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-3">Your Vision. Our Expertise. Limitless Possibilities.</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6] mb-4">Have a unique creative challenge? We thrive on innovation. Our team is adept at crafting bespoke solutions tailored to your specific needs, pushing creative boundaries to deliver results that exceed expectations. If you can dream it, we can design it.</p>
+                </div>
+                <p class="text-[14px] font-semibold text-[#0066cc]">Beyond the brief. Beyond expectation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Our Process -->
+    <section class="bg-white py-20">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title font-bold text-[#1d1d1f] mb-6">The Pen & Pixel Blueprint: Precision. Partnership. Performance.</h2>
+                <p class="max-w-[700px] mx-auto text-[17px] text-[#6e6e73]">Our proven methodology ensures a seamless journey from concept to launch, delivering exceptional results every step of the way.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Step 1: Discovery & Strategy -->
+                <div class="process-step relative">
+                    <div class="bg-[#f5f5f7] rounded-[24px] p-8 min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-[#0066cc] text-white rounded-full flex items-center justify-center font-bold text-[18px] mb-4">1</div>
+                            <h3 class="text-[19px] font-semibold text-[#1d1d1f] mb-4">Discovery & Strategy</h3>
+                            <p class="text-[15px] text-[#6e6e73] leading-[1.6]">We begin by immersing ourselves in your world—understanding your vision, market, and objectives. This foundational phase involves in-depth consultations, market research, and strategic planning to define a clear roadmap for success.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Concept & Design -->
+                <div class="process-step relative">
+                    <div class="bg-[#f5f5f7] rounded-[24px] p-8 min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-[#0066cc] text-white rounded-full flex items-center justify-center font-bold text-[18px] mb-4">2</div>
+                            <h3 class="text-[19px] font-semibold text-[#1d1d1f] mb-4">Concept & Design</h3>
+                            <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Our creative maestros translate insights into innovative concepts. We develop compelling visual directions, wireframes, and prototypes, presenting you with meticulously crafted designs that capture your brand's essence and strategic goals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Development & Refinement -->
+                <div class="process-step relative">
+                    <div class="bg-[#f5f5f7] rounded-[24px] p-8 min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-[#0066cc] text-white rounded-full flex items-center justify-center font-bold text-[18px] mb-4">3</div>
+                            <h3 class="text-[19px] font-semibold text-[#1d1d1f] mb-4">Development & Refinement</h3>
+                            <p class="text-[15px] text-[#6e6e73] leading-[1.6]">With approved designs, our technical experts bring your vision to life. Whether it's coding a responsive website or finalizing print-ready files, we ensure every detail is perfected, incorporating your feedback for optimal results.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Launch & Optimization -->
+                <div class="process-step relative">
+                    <div class="bg-[#f5f5f7] rounded-[24px] p-8 min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-[#0066cc] text-white rounded-full flex items-center justify-center font-bold text-[18px] mb-4">4</div>
+                            <h3 class="text-[19px] font-semibold text-[#1d1d1f] mb-4">Launch & Optimization</h3>
+                            <p class="text-[15px] text-[#6e6e73] leading-[1.6]">The grand unveiling! We meticulously prepare for launch, ensuring a flawless deployment. Our partnership doesn't end there; we provide ongoing support and strategic insights to help your brand continue to thrive and evolve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 pt-8 border-t border-[#d2d2d7]">
+                <p class="text-[16px] font-semibold text-[#1d1d1f] italic">Your vision, our mastery, undeniable impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Portfolio/Work Showcase -->
+    <section id="portfolio" class="max-w-[1260px] mx-auto px-6 md:px-10 py-20">
+        <div class="text-center mb-16">
+            <h2 class="section-title font-bold text-[#1d1d1f] mb-6">Impactful Creations. Tangible Results.</h2>
+            <p class="max-w-[700px] mx-auto text-[17px] text-[#6e6e73]">Explore a curated selection of our recent triumphs, where strategic design meets measurable success. See how we've transformed ambitious brands into market leaders.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Project 1 -->
+            <div class="bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-sm apple-transition portfolio-item">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="parallax-bg absolute inset-0">
+                        <img src="https://source.unsplash.com/featured/?ecommerce,product" alt="E-commerce project" loading="lazy">
+                    </div>
+                    <div class="absolute inset-0 bg-black/10"></div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-4">Transforming E-Commerce Excellence</h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Challenge</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">An ambitious e-commerce brand needed a complete digital overhaul to compete with industry leaders and drive meaningful conversion growth.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Solution</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">We designed and developed a stunning, fully responsive e-commerce platform with optimized user flows, compelling product galleries, and strategic conversion elements that reflected their premium brand positioning.</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Outcome</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">34% increase in conversion rates, 67% improvement in average order value, and significant boost in customer satisfaction scores within the first quarter.</p>
+                    </div>
+
+                    <a href="#" class="inline-flex items-center text-[#0066cc] font-medium hover:underline mt-6">View Case Study &gt;</a>
+                </div>
+            </div>
+
+            <!-- Project 2 (video) -->
+            <div class="bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-sm apple-transition portfolio-item">
+                <div class="relative h-64 overflow-hidden">
+                    <video class="w-full h-full object-cover" controls playsinline poster="https://source.unsplash.com/featured/?brand,identity">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-overlay" aria-hidden="true"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l15-9L5 3z" fill="currentColor"/></svg></div></div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-[21px] font-bold text-[#1d1d1f] mb-4">Brand Identity That Commands Respect</h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Challenge</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">A growing B2B consulting firm needed to establish a distinctive, premium brand identity that positioned them as industry leaders and attracted enterprise clients.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Solution</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">We crafted a comprehensive brand identity system including a sophisticated logo, refined color palette, typography hierarchy, and extensive brand guidelines that reflected their strategic positioning and market authority.</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[14px] font-semibold text-[#6e6e73] uppercase tracking-wider mb-2">Outcome</h4>
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Enhanced brand perception, successfully attracted three major enterprise clients valued at $2.3M combined, and became the visual benchmark in their industry.</p>
+                    </div>
+
+                    <a href="#" class="inline-flex items-center text-[#0066cc] font-medium hover:underline mt-6">View Case Study &gt;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 pt-8 border-t border-[#d2d2d7]">
+            <p class="text-[16px] font-semibold text-[#1d1d1f] italic">Proof that exceptional design drives extraordinary growth.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Client Benefits -->
+    <section class="bg-white py-20">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title font-bold text-[#1d1d1f] mb-6">The Advantage of Partnering with Pen & Pixel.</h2>
+                <p class="max-w-[700px] mx-auto text-[17px] text-[#6e6e73]">We don't just deliver services; we deliver a competitive edge. Experience the transformative power of strategic design.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <div class="benefit-card bg-[#f5f5f7] rounded-[24px] p-8">
+                    <h3 class="text-[18px] font-semibold text-[#1d1d1f] mb-3">Accelerated Growth</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Our designs are engineered to attract, engage, and convert, directly contributing to your bottom line and market expansion.</p>
+                </div>
+
+                <div class="benefit-card bg-[#f5f5f7] rounded-[24px] p-8">
+                    <h3 class="text-[18px] font-semibold text-[#1d1d1f] mb-3">Enhanced Brand Authority</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Establish an authoritative and trustworthy presence that commands respect and fosters unwavering customer loyalty.</p>
+                </div>
+
+                <div class="benefit-card bg-[#f5f5f7] rounded-[24px] p-8">
+                    <h3 class="text-[18px] font-semibold text-[#1d1d1f] mb-3">Unforgettable Customer Experiences</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Create seamless, intuitive, and delightful interactions that turn first-time visitors into lifelong advocates.</p>
+                </div>
+
+                <div class="benefit-card bg-[#f5f5f7] rounded-[24px] p-8">
+                    <h3 class="text-[18px] font-semibold text-[#1d1d1f] mb-3">Strategic Market Positioning</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Differentiate your brand with a unique voice and visual identity that cuts through the clutter and resonates with your ideal audience.</p>
+                </div>
+
+                <div class="benefit-card bg-[#f5f5f7] rounded-[24px] p-8">
+                    <h3 class="text-[18px] font-semibold text-[#1d1d1f] mb-3">Peace of Mind</h3>
+                    <p class="text-[15px] text-[#6e6e73] leading-[1.6]">Partner with a team of dedicated experts committed to your success, allowing you to focus on what you do best.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 pt-8 border-t border-[#d2d2d7]">
+                <p class="text-[16px] font-semibold text-[#1d1d1f] italic">Your ambition, amplified. Your success, accelerated.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Testimonials -->
+    <section class="max-w-[1260px] mx-auto px-6 md:px-10 py-20">
+        <div class="text-center mb-16">
+            <h2 class="section-title font-bold text-[#1d1d1f] mb-6">Voices of Success: What Our Partners Say.</h2>
+            <p class="max-w-[700px] mx-auto text-[17px] text-[#6e6e73]">Hear directly from the visionary leaders and growing brands who have experienced the Pen & Pixel difference.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Testimonial 1 -->
+            <div class="bg-white border border-[#d2d2d7]/50 rounded-[24px] p-8">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-[16px]">★★★★★</span>
+                </div>
+                <p class="text-[16px] text-[#1d1d1f] leading-[1.6] mb-6">"Working with Pen & Pixel was a game-changer for our e-commerce brand. Their website design not only looks incredible but has significantly boosted our conversion rates. They truly understood our vision and delivered beyond expectation."</p>
+                <p class="text-[14px] font-semibold text-[#6e6e73]">— [Client Name], Founder, [Company Name]</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white border border-[#d2d2d7]/50 rounded-[24px] p-8">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-[16px]">★★★★★</span>
+                </div>
+                <p class="text-[16px] text-[#1d1d1f] leading-[1.6] mb-6">"Our new brand identity crafted by Pen & Pixel has completely transformed how we're perceived in the market. It's sophisticated, memorable, and perfectly captures our essence. A truly premium experience from start to finish."</p>
+                <p class="text-[14px] font-semibold text-[#6e6e73]">— [Client Name], CEO, [Company Name]</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white border border-[#d2d2d7]/50 rounded-[24px] p-8">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-[16px]">★★★★★</span>
+                </div>
+                <p class="text-[16px] text-[#1d1d1f] leading-[1.6] mb-6">"The team at Pen & Pixel are strategic masterminds. They didn't just design; they provided invaluable insights that helped us refine our marketing assets and connect more deeply with our audience. Highly recommend for any ambitious business."</p>
+                <p class="text-[14px] font-semibold text-[#6e6e73]">— [Client Name], Marketing Director, [Company Name]</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 pt-8 border-t border-[#d2d2d7]">
+            <p class="text-[16px] font-semibold text-[#1d1d1f] italic">Trust built on results. Partnerships forged in success.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FAQ Accordion System -->
+    <section id="faq" class="max-w-[900px] mx-auto px-6 md:px-10 py-20">
+        <h2 class="section-title font-bold text-[#1d1d1f] text-center mb-12">Your Questions. Our Answers.</h2>
+        <p class="text-center text-[17px] text-[#6e6e73] mb-12">We're here to provide clarity and confidence as you embark on your creative journey with Pen & Pixel.</p>
+        
+        <div class="border-t border-[#d2d2d7] divide-y divide-[#d2d2d7]">
+            
+            <!-- FAQ Item 1 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[16px] font-semibold text-[#1d1d1f] pr-4">What kind of businesses do you typically work with?</span>
+                    <span class="text-[#0066cc] font-bold text-[24px] flex-shrink-0">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6] pt-4">We partner with startups, growing businesses, e-commerce brands, and ambitious entrepreneurs who understand that great design is a powerful tool for building trust, attracting customers, and driving growth. Our clients are those ready to invest in premium, strategic creative solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[16px] font-semibold text-[#1d1d1f] pr-4">How long does a typical project take?</span>
+                    <span class="text-[#0066cc] font-bold text-[24px] flex-shrink-0">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6] pt-4">Project timelines vary depending on the scope and complexity. A website redesign might take 8-12 weeks, while a comprehensive branding project could be 4-6 weeks. We'll provide a detailed timeline after our initial discovery phase.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[16px] font-semibold text-[#1d1d1f] pr-4">What is your pricing structure?</span>
+                    <span class="text-[#0066cc] font-bold text-[24px] flex-shrink-0">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6] pt-4">Our services are tailored to each client's unique needs and objectives. We provide custom proposals after a thorough consultation to ensure our solutions align perfectly with your goals and budget. We focus on delivering exceptional value and measurable ROI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[16px] font-semibold text-[#1d1d1f] pr-4">Can you help with ongoing marketing support after a project is complete?</span>
+                    <span class="text-[#0066cc] font-bold text-[24px] flex-shrink-0">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6] pt-4">Absolutely. We offer various post-launch support packages, including ongoing social media creative, website maintenance, and strategic marketing asset development to ensure your brand continues to thrive.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="py-6">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-[16px] font-semibold text-[#1d1d1f] pr-4">What makes Pen & Pixel different from other agencies?</span>
+                    <span class="text-[#0066cc] font-bold text-[24px] flex-shrink-0">+</span>
+                </button>
+                <div class="grid grid-rows-[0fr] transition-all duration-300 ease-in-out opacity-0">
+                    <div class="overflow-hidden">
+                        <p class="text-[15px] text-[#6e6e73] leading-[1.6] pt-4">Our distinction lies in our unwavering commitment to strategic outcomes. We combine award-winning design with a deep understanding of business objectives, ensuring every creative solution is not just beautiful, but also highly effective in driving your growth and market dominance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 pt-8 border-t border-[#d2d2d7]">
+            <p class="text-[16px] font-semibold text-[#1d1d1f] italic">Clarity, confidence, and creative excellence.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 10: Final Call-to-Action -->
+    <section id="cta" class="bg-gradient-to-br from-[#0066cc] to-[#0052a3] text-white py-20">
+        <div class="max-w-[1000px] mx-auto px-6 md:px-10 text-center">
+            <h2 class="text-[48px] md:text-[56px] font-bold tracking-tight mb-6 leading-[1.1]">Ready to Redefine Your Brand's Future?</h2>
+            <p class="text-[18px] leading-[1.6] mb-10 max-w-[700px] mx-auto opacity-95">The path to unparalleled brand presence and accelerated growth begins with a single conversation. Let's craft your next success story.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="bg-white text-[#0066cc] px-8 py-4 rounded-full text-[16px] font-semibold hover:bg-[#f5f5f7] apple-transition">Start Your Transformation Today</a>
+                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full text-[16px] font-semibold hover:bg-white hover:text-[#0066cc] apple-transition">Connect With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: System Footer -->
+    <footer class="bg-[#1d1d1f] text-[#86868b] text-[12px] border-t border-[#424245] py-12">
+        <div class="max-w-[1260px] mx-auto px-6 md:px-10">
+            
+            <!-- Structural Resource Directory Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-[#424245] pb-10 mb-8">
+                <div>
+                    <p class="font-semibold text-white mb-4">Services</p>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white apple-transition">Web Design</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Branding</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Social Media</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Company</p>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-white apple-transition">About Us</a></li>
+                        <li><a href="#portfolio" class="hover:text-white apple-transition">Our Work</a></li>
+                        <li><a href="#faq" class="hover:text-white apple-transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Resources</p>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white apple-transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Design Guides</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Connect</p>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white apple-transition">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white apple-transition">Dribbble</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footnote Disclosures -->
+            <div class="space-y-3 leading-normal border-b border-[#424245] pb-8 mb-8">
+                <p>Pen & Pixel is committed to delivering exceptional creative solutions that drive measurable business growth. All our work is protected by comprehensive intellectual property agreements.</p>
+            </div>
+
+            <!-- Copyright and Legal Links -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <p>Copyright © 2026 Pen & Pixel. All rights reserved.</p>
+                <div class="flex flex-wrap space-x-4">
+                    <a href="#" class="hover:text-white apple-transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white apple-transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white apple-transition">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Tagline -->
+        <div class="text-center mt-12 pt-8 border-t border-[#424245] text-[#6e6e73] text-[14px]">
+            <p>Pen & Pixel: Crafting Legacies, Not Just Designs. | Where Vision Meets Velocity.</p>
+        </div>
+    </footer>
+
+    <!-- Native Interaction Logic Layers -->
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <script>
+        // ============================================
+        // SMOOTH SCROLL INITIALIZATION
+        // ============================================
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        
+        // Implement smooth scroll with GSAP
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            let proxy = { smooth: 0 },
+                smoothSetter = gsap.quickSetter(".scroll-container, body", "scrollY", "px"),
+                clamp = gsap.utils.clamp(window.innerHeight * -0.1, window.innerHeight * 1.1);
+
+            ScrollTrigger.addEventListener("wheel", onWheel);
+            
+            function onWheel(e) {
+                let clamp = gsap.utils.clamp(-500, 500);
+                proxy.smooth += clamp(e.deltaY) * -0.5;
+                gsap.to(proxy, {
+                    smooth: 0,
+                    duration: 0.8,
+                    ease: "power4.out",
+                    overwrite: "auto",
+                    onUpdate: () => {
+                        window.scrollY = proxy.smooth;
+                        ScrollTrigger.update();
+                    }
+                });
+
+                return false;
+            }
+
+            gsap.set("body", { overflowY: "auto" });
+            
+            let updateProxySetter = () => {
+                smoothSetter(proxy.smooth);
+                ScrollTrigger.update();
+            },
+            
+            reset = () => {
+                proxy.smooth = window.scrollY;
+            };
+
+            ScrollTrigger.addEventListener("refresh", reset);
+            gsap.ticker.add(updateProxySetter);
+        }
+
+        // ============================================
+        // HERO FADE & SCALE INTRO (ON LOAD)
+        // ============================================
+        window.addEventListener('load', () => {
+            if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+                const heroTitle = document.querySelector('.hero-title');
+                const heroContent = document.querySelector('header p');
+                const ctaButtons = document.querySelectorAll('.cta-button, header a');
+
+                // Initial state
+                gsap.set([heroTitle, heroContent], { 
+                    opacity: 0, 
+                    scale: 0.95 
+                });
+                gsap.set(ctaButtons, { 
+                    opacity: 0, 
+                    y: 20 
+                });
+
+                // Animate in
+                gsap.timeline()
+                    .to(heroTitle, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: "cubic-bezier(0.25, 1, 0.5, 1)"
+                    }, 0.1)
+                    .to(heroContent, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: "cubic-bezier(0.25, 1, 0.5, 1)"
+                    }, 0.2)
+                    .to(ctaButtons, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "cubic-bezier(0.25, 1, 0.5, 1)",
+                        stagger: 0.12
+                    }, 0.4);
+            }
+        });
+
+        // ============================================
+        // WHY CHOOSE US SECTION - STAGGERED CASCADE
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const whyChooseItems = document.querySelectorAll('.why-choose-item');
+            
+            if (whyChooseItems.length > 0) {
+                gsap.set(whyChooseItems, { opacity: 0, x: -30 });
+
+                gsap.utils.toArray(whyChooseItems).forEach((item, index) => {
+                    ScrollTrigger.create({
+                        trigger: item,
+                        onEnter: () => {
+                            gsap.to(item, {
+                                opacity: 1,
+                                x: 0,
+                                duration: 0.6,
+                                ease: "power2.out",
+                                delay: index * 0.08
+                            });
+                        },
+                        once: true
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // SERVICES GRID - CASCADING REVEAL
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            if (serviceCards.length > 0) {
+                gsap.set(serviceCards, { opacity: 0, y: 40 });
+
+                gsap.utils.toArray(serviceCards).forEach((card, index) => {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        onEnter: () => {
+                            gsap.to(card, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.7,
+                                ease: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                                delay: (index % 3) * 0.12
+                            });
+                        },
+                        once: true
+                    });
+
+                    // Hover animation
+                    card.addEventListener('mouseenter', () => {
+                        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+                            gsap.to(card, {
+                                scale: 1.02,
+                                borderColor: '#0066cc',
+                                duration: 0.3,
+                                ease: "power2.out"
+                            });
+                        }
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+                            gsap.to(card, {
+                                scale: 1,
+                                borderColor: 'rgb(210, 210, 215, 0.5)',
+                                duration: 0.3,
+                                ease: "power2.out"
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // OUR PROCESS SECTION - SEQUENTIAL ANIMATION
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const processSteps = document.querySelectorAll('.process-step');
+            
+            if (processSteps.length > 0) {
+                gsap.set(processSteps, { opacity: 0, y: 50 });
+
+                gsap.utils.toArray(processSteps).forEach((step, index) => {
+                    ScrollTrigger.create({
+                        trigger: step,
+                        onEnter: () => {
+                            gsap.to(step, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.8,
+                                ease: "back.out(1.3)",
+                                delay: index * 0.15
+                            });
+                        },
+                        once: true
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // PORTFOLIO ITEMS - PARALLAX & REVEAL
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            portfolioItems.forEach((item, index) => {
+                const parallaxBg = item.querySelector('.parallax-bg');
+                
+                // Text reveal
+                gsap.set(item, { opacity: 0, y: 60 });
+                ScrollTrigger.create({
+                    trigger: item,
+                    onEnter: () => {
+                        gsap.to(item, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            ease: "power3.out"
+                        });
+                    },
+                    once: true
+                });
+
+                // Parallax effect on background
+                if (parallaxBg) {
+                    gsap.to(parallaxBg, {
+                        yPercent: 20,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: item,
+                            scrub: 1,
+                            markers: false
+                        }
+                    });
+                }
+            });
+        }
+
+        // ============================================
+        // TESTIMONIALS - CASCADING ENTRANCE
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            
+            if (testimonialCards.length > 0) {
+                gsap.set(testimonialCards, { opacity: 0, y: 40 });
+
+                gsap.utils.toArray(testimonialCards).forEach((card, index) => {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        onEnter: () => {
+                            gsap.to(card, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.7,
+                                ease: "power2.out",
+                                delay: index * 0.15
+                            });
+                        },
+                        once: true
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // BENEFITS SECTION - FADE & SCALE CASCADE
+        // ============================================
+        if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+            const benefitCards = document.querySelectorAll('.benefit-card');
+            
+            if (benefitCards.length > 0) {
+                gsap.set(benefitCards, { opacity: 0, scale: 0.9 });
+
+                gsap.utils.toArray(benefitCards).forEach((card, index) => {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        onEnter: () => {
+                            gsap.to(card, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.6,
+                                ease: "back.out(1.2)",
+                                delay: (index % 5) * 0.1
+                            });
+                        },
+                        once: true
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // REFRESH SCROLL TRIGGER ON LOAD
+        // ============================================
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+
+        // ============================================
+        // FAQ ACCORDION - EXISTING FUNCTIONALITY
+        // ============================================
+        function toggleAccordion(button) {
+            const contentTrack = button.nextElementSibling;
+            const operationalIcon = button.querySelector('span:last-child');
+            
+            if (contentTrack.classList.contains('grid-rows-[0fr]')) {
+                contentTrack.classList.remove('grid-rows-[0fr]', 'opacity-0');
+                contentTrack.classList.add('grid-rows-[1fr]', 'opacity-100');
+                operationalIcon.style.transform = 'rotate(45deg)';
+            } else {
+                contentTrack.classList.remove('grid-rows-[1fr]', 'opacity-100');
+                contentTrack.classList.add('grid-rows-[0fr]', 'opacity-0');
+                operationalIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
