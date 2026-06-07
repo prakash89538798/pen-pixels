@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Terminal, Shield, ArrowRight, ShieldAlert, Cpu } from "lucide-react";
+import { Sparkles, Layers, ArrowRight, Eye, Monitor } from "lucide-react";
 
 const TOTAL_FRAMES = 240;
 
@@ -13,7 +13,7 @@ export default function Hero() {
 
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
-  const [loadingStatus, setLoadingStatus] = useState("Preparing evaluation environment...");
+  const [loadingStatus, setLoadingStatus] = useState("Initializing creative canvas...");
 
   // Set up scrolling hooks
   const { scrollYProgress } = useScroll({
@@ -36,12 +36,12 @@ export default function Hero() {
     let loadedCount = 0;
     const preloadImages = async () => {
       const statusSteps = [
-        "Preparing assessment environment...",
-        "Loading adversarial test scenarios...",
-        "Validating security controls...",
-        "Initializing audit framework...",
-        "Synchronizing assessment engine...",
-        "Assessment environment ready...",
+        "Crating brand matrices...",
+        "Loading ultra-high definition assets...",
+        "Optimizing digital frameworks...",
+        "Rendering geometric guidelines...",
+        "Synchronizing aesthetic engine...",
+        "Creative engine ready...",
       ];
 
       for (let i = 1; i <= TOTAL_FRAMES; i++) {
@@ -177,7 +177,7 @@ export default function Hero() {
                   cx="40"
                   cy="40"
                   r="36"
-                  stroke="#10b981"
+                  stroke="#ffffff"
                   strokeWidth="2"
                   fill="transparent"
                   strokeDasharray="226"
@@ -185,13 +185,13 @@ export default function Hero() {
                   transition={{ ease: "easeOut" }}
                 />
               </svg>
-              <Cpu className="w-6 h-6 text-zinc-400 animate-pulse" />
+              <Sparkles className="w-6 h-6 text-zinc-400 animate-pulse" />
             </div>
 
             <div className="space-y-2">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-400 flex items-center justify-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Ryvane Security Platform
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                Studio Engine Initializing
               </div>
               <h2 className="text-lg font-medium tracking-tight text-white font-mono">
                 {loadProgress}%
@@ -202,9 +202,9 @@ export default function Hero() {
             </div>
 
             <div className="mt-8 w-64 p-3 rounded border border-white/[0.06] bg-white/[0.01] text-left font-mono text-[8px] text-zinc-600 space-y-1">
-              <div>&gt; SECURITY FRAMEWORK INITIALIZED</div>
-              <div>&gt; LOADING ASSESSMENT MODULES</div>
-              <div>&gt; VALIDATING TEST ENVIRONMENT</div>
+              <div>&gt; STUDIO SYSTEM ONLINE</div>
+              <div>&gt; ASSET MATRIX OPTIMIZED</div>
+              <div>&gt; HIGH-FIDELITY PIPELINE READY</div>
             </div>
           </div>
         </div>
@@ -230,84 +230,84 @@ export default function Hero() {
             className="absolute flex flex-col items-center text-center max-w-5xl space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] backdrop-blur-md">
-              <Shield className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">AI Security Assessments</span>
+              <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">Identity & Design Studio</span>
             </div>
 
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight font-sans">
-              Secure AI Before It <br className="hidden md:inline" />Becomes a Liability.
+              Elevate Your Brand. <br className="hidden md:inline" />Dominate Your Market.
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed font-sans">
-              We help organizations identify vulnerabilities, validate safeguards, and deploy artificial intelligence systems with absolute operational confidence.
+              We transform ambitious visions into iconic brands and digital experiences that captivate, convert, and command attention. Your next chapter of growth starts here.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <button
-                onClick={() => document.getElementById("cta-section")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById("booking-section")?.scrollIntoView({ behavior: "smooth" })}
                 className="group relative flex items-center justify-center gap-2 px-6 h-12 rounded bg-white text-black font-sans font-medium text-sm transition-all duration-300 hover:bg-zinc-200 cursor-pointer"
               >
-                Schedule an Assessment
+                Schedule Your Brand Transformation
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </button>
 
               <button
-                onClick={() => document.getElementById("ai-security")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById("portfolio-showcase")?.scrollIntoView({ behavior: "smooth" })}
                 className="flex items-center justify-center gap-2 px-6 h-12 rounded border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] text-white font-sans text-sm font-medium transition-all cursor-pointer backdrop-blur-sm"
               >
-                View Methodology
+                Explore Our Work
               </button>
             </div>
           </motion.div>
 
-          {/* Scene 2: Model Evaluation Framework */}
+          {/* Scene 2: Brand Strategy Focus */}
           <motion.div
             style={{ opacity: scene2Opacity, y: scene2Y }}
             className="absolute flex flex-col items-start text-left max-w-3xl space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] backdrop-blur-md">
-              <Terminal className="w-3.5 h-3.5 text-zinc-400" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">AI Risk Analysis</span>
+              <Layers className="w-3.5 h-3.5 text-zinc-400" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">Strategic Position</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight font-sans">
-              Adversarial Testing for <br />Modern Machine Learning
+              Engineered to Capture <br />and Command Attention
             </h2>
 
             <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl font-sans">
-              We systematically analyze language models, autonomous agents, and retrieval pipelines against prompt injection, jailbreaks, training data alignment bypasses, and data exposure profiles.
+              True differentiation isn't just cosmetic. We map market imbalances, rewrite product narratives, and reshape consumer perceptions to scale your business framework into an undeniable classic identity.
             </p>
 
             <div className="flex items-center gap-4 text-[10px] font-mono text-zinc-400 bg-white/[0.02] border border-white/[0.06] p-3 rounded backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              ASSESSMENT ENVIRONMENT ACTIVE: MODELS · AGENTS · RETRIEVAL
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              STUDIO CAPABILITIES ACTIVE: IDENTITY · EMERGENCE · STRATEGY
             </div>
           </motion.div>
 
-          {/* Scene 3: Enterprise Red Team Framework */}
+          {/* Scene 3: Digital Product & Experiences */}
           <motion.div
             style={{ opacity: scene3Opacity, y: scene3Y }}
             className="absolute flex flex-col items-center text-center max-w-3xl space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] backdrop-blur-md">
-              <ShieldAlert className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">Red Team Operations</span>
+              <Monitor className="w-3.5 h-3.5 text-zinc-300" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">Digital Architecture</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight font-sans">
-              Security Validation Beyond Compliance
+              Immersive Interactivity That Converts
             </h2>
 
             <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl font-sans">
-              Our simulated threat campaigns execute realistic adversarial actions to locate weaknesses across business logic layers, systemic permissions gaps, and active workflows before real actors find them.
+              We bridge flawless UI aesthetic direction with state-of-the-art frontend deployment architectures to present digital interfaces that run smooth, perform beautifully, and look absolutely striking.
             </p>
 
             <button
-              onClick={() => document.getElementById("red-team")?.scrollIntoView({ behavior: "smooth" })}
-              className="mt-2 inline-flex items-center gap-1.5 font-sans text-xs font-medium text-white border-b border-white/20 pb-0.5 hover:border-emerald-400 hover:text-emerald-400 transition-colors"
+              onClick={() => document.getElementById("portfolio-showcase")?.scrollIntoView({ behavior: "smooth" })}
+              className="mt-2 inline-flex items-center gap-1.5 font-sans text-xs font-medium text-white border-b border-white/20 pb-0.5 hover:border-zinc-400 transition-colors"
             >
-              Explore Red Teaming Operations
-              <ArrowRight className="w-3 h-3" />
+              Discover the Interactive Case Studies
+              <Eye className="w-3 h-3" />
             </button>
           </motion.div>
         </div>
@@ -318,13 +318,13 @@ export default function Hero() {
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-2"
         >
           <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-600">
-            Scroll to Navigate
+            Scroll to Experience
           </span>
           <div className="w-[18px] h-[32px] rounded-full border border-white/10 flex justify-center p-1 bg-white/[0.01]">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 rounded-full bg-emerald-400"
+              className="w-1.5 h-1.5 rounded-full bg-white"
             />
           </div>
         </motion.div>

@@ -53,7 +53,7 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <span className="font-mono text-sm font-semibold tracking-[0.25em] text-white transition-colors">
-              RYVANE
+              Pen&Pixels
             </span>
           </div>
 

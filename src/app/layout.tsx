@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ryvane | Autonomous Offensive Security & AI Auditing Platform",
+  title: "Pen&Pixels | Autonomous Offensive Security & AI Auditing Platform",
   description: "An elite cybersecurity and AI security testing platform designed for autonomous vulnerability detection, threat modeling, and advanced red team operations.",
 };
 

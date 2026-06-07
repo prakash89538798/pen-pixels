@@ -1,311 +1,275 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, Server, ShieldCheck, Database, Settings, Code } from "lucide-react";
+import { Layout, Layers, Terminal, Sparkles, Move, Eye, Command } from "lucide-react";
+
+interface SpecItem {
+  icon: React.ReactNode;
+  name: string;
+  detail: string;
+}
+
+interface CanvasLayer {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  metric: string;
+  visualElement: React.ReactNode;
+}
 
 export default function PlatformSpecs() {
-  const [activeTab, setActiveTab] = useState("api");
+  const [activeLayer, setActiveLayer] = useState<string>("tokens");
 
-  const tabs = [
-    { id: "api", name: "Assessment Config" },
-    { id: "yaml", name: "Governance Schema" },
-    { id: "logs", name: "Audit Log Findings" }
-  ];
-
-  const codeBlocks: Record<string, string> = {
-    api: `{
-  "assessment_id": "ryvane-audit-node-7",
-  "target_pipeline": "https://api.internal.inference-mesh",
-  "evaluation_policy": {
-    "engine": "adversarial-fuzzing-v3",
-    "risk_profile": "comprehensive-assurance",
-    "evaluation_depth": 12,
-    "vectors": ["jailbreak_bypass", "context_poisoning"]
-  },
-  "isolation_layer": {
-    "protocol": "zero-egress-verification",
-    "gateway": "secure.mesh.internal",
-    "sampling_rate_ms": 100
-  }
-}`,
-    yaml: `apiVersion: security.ryvane.ai/v1alpha1
-kind: AIValidationFramework
-metadata:
-  name: enterprise-audit-framework
-  namespace: ryvane-governance
-spec:
-  concurrencyLimit: 32
-  modelReference:
-    name: audit-pipeline-8b
-    source: internal-secure-registry
-  containmentPolicy:
-    airGappedMode: true
-    allowedIngressCIDR:
-      - cidr: 10.120.0.0/16
-        ports: [443, 8443]
-  remediationTrigger: true`,
-    logs: `[2026-05-30T02:28:11Z] INGESTING LOG STREAM FROM evaluation-worker-7
-[2026-05-30T02:28:12Z] VERIFYING API ROBUSTNESS ON /v1/chat/completions
-[2026-05-30T02:28:14Z] DETECTED HIGH INJECTION RESPONSE VARIATION (DELTA: 0.89)
-[2026-05-30T02:28:15Z] RISK STATE: Model jailbreak pathway confirmed at vector index #14
-[2026-05-30T02:28:17Z] GENERATING REMEDIATION SCHEMA STRUCTURE... DONE
-[2026-05-30T02:28:19Z] INJECTING TARGET SAFEGUARD CONSTRAINTS TO PROMPT ROUTER`
-  };
-
-  const specs = [
+  const specs: SpecItem[] = [
     {
-      icon: <Server className="w-4 h-4 text-zinc-400" />,
-      name: "Private Assessments",
-      detail: "Cloud, hybrid, or 100% air-gapped secure installations."
+      icon: <Layers className="w-4 h-4" />,
+      name: "Token-Driven Frameworks",
+      detail: "Design values live in perfect, real-time synchronization with production codebases. Zero translational loss."
     },
     {
-      icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />,
-      name: "Air-Gapped Support",
-      detail: "Strict environment limits. No proprietary datasets leave your control."
+      icon: <Layout className="w-4 h-4" />,
+      name: "Sub-Pixel Optimization",
+      detail: "Typography maps cleanly onto micro-grids for crisp and flawless readability across high-end display viewports.[cite: 2]"
     },
     {
-      icon: <Database className="w-4 h-4 text-zinc-400" />,
-      name: "Compliance Alignment",
-      detail: "Mapped directly against global safety frameworks and internal policies."
+      icon: <Move className="w-4 h-4" />,
+      name: "Kinetic Micro-Interactions",
+      detail: "Choreographed spatial feedback structures designed to maximize layout immersion and tactile response."
     },
     {
-      icon: <Cpu className="w-4 h-4 text-emerald-400" />,
-      name: "Continuous Monitoring",
-      detail: "Automated verification routines track system safety over code updates."
+      icon: <Terminal className="w-4 h-4" />,
+      name: "Decoupled Design Systems",
+      detail: "We engineer flexible frameworks free from monolithic architectural bloat, built for infinite product scale.[cite: 2]"
     }
   ];
 
+  const canvasLayers: Record<string, CanvasLayer> = {
+    tokens: {
+      id: "tokens",
+      title: "Global Design Tokens Matrix",
+      subtitle: "Systematic Multi-Platform Scale Engine",
+      badge: "Architecture // 01",
+      metric: "Ratio: 1.618 (Golden Mean)",
+      visualElement: (
+        <div className="space-y-6 w-full max-w-[420px]">
+          <div className="flex justify-between items-center text-[11px] font-mono tracking-wider text-[#f0eee8]/35 border-b border-white/5 pb-2">
+            <span>TOKEN KEY</span>
+            <span>SYSTEM COMPUTED VALUE</span>
+          </div>
+          {[
+            { key: "canvas-bg-primary", val: "#030305", type: "Color" },
+            { key: "accent-neon-lime", val: "#d4f060", type: "Color" },
+            { key: "font-stack-display", val: "Syne, Extrabold", type: "Type" },
+            { key: "layout-grid-gutter", val: "24px (Sub-pixel aligned)", type: "Spacing" },
+          ].map((token) => (
+            <div key={token.key} className="flex justify-between items-center font-mono text-[12px] group/token">
+              <span className="text-[#f0eee8]/60 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4f060]" />
+                {token.key}
+              </span>
+              <span className="text-white font-medium bg-white/[0.02] border border-white/5 px-2.5 py-1 rounded-md group-hover/token:border-[#d4f060]/30 transition-colors">
+                {token.val}
+              </span>
+            </div>
+          ))}
+        </div>
+      )
+    },
+    wireframe: {
+      id: "wireframe",
+      title: "Micro-Grid Composition Geometry",
+      subtitle: "Absolute Visual Spatial Harmony",
+      badge: "Structural // 02",
+      metric: "Grid: 8px Multi-Density Array",
+      visualElement: (
+        <div className="w-full max-w-[440px] aspect-[16/10] border border-dashed border-white/10 rounded-xl relative p-4 flex flex-col justify-between overflow-hidden bg-black/20">
+          {/* Spatial Grid Backdrop */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,240,96,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,240,96,0.03)_1px,transparent_1px)] bg-[size:16px_16px]" />
+          <div className="flex justify-between items-center relative z-10">
+            <div className="w-24 h-3 bg-white/10 rounded-full" />
+            <div className="flex gap-2">
+              <div className="w-4 h-4 rounded-full bg-white/10" />
+              <div className="w-4 h-4 rounded-full bg-white/10" />
+            </div>
+          </div>
+          <div className="space-y-3 relative z-10">
+            <div className="w-full h-8 border border-[#d4f060]/30 rounded-lg flex items-center px-3 justify-between bg-[#d4f060]/[0.02]">
+              <span className="font-mono text-[9px] text-[#d4f060] tracking-widest">CONTAINER_HERO_NODE</span>
+              <div className="w-2 h-2 rounded-full bg-[#d4f060]" />
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="h-16 border border-white/10 rounded-lg bg-white/[0.01]" />
+              <div className="h-16 border border-white/10 rounded-lg bg-white/[0.01]" />
+              <div className="h-16 border border-white/10 rounded-lg bg-white/[0.01]" />
+            </div>
+          </div>
+        </div>
+      )
+    },
+    motion: {
+      id: "motion",
+      title: "Choreographed Spatial Transitions",
+      subtitle: "Fluid Mechanical Physics Simulation",
+      badge: "Kinetic // 03",
+      metric: "Easing: cubic-bezier(0.16, 1, 0.3, 1)",
+      visualElement: (
+        <div className="w-full max-w-[420px] space-y-4">
+          <div className="p-4 rounded-xl border border-white/5 bg-white/[0.01] flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-[#d4f060] animate-ping" />
+              <span className="text-[13px] font-medium font-['Syne',sans-serif]">Page_Transition_Intro</span>
+            </div>
+            <span className="font-mono text-[11px] text-[#f0eee8]/45">Duration: 700ms</span>
+          </div>
+          {/* Vector Bezier Curve Graphic */}
+          <div className="h-32 w-full rounded-xl border border-white/5 bg-black/40 relative overflow-hidden p-4 flex items-end">
+            <svg className="absolute inset-0 w-full h-full p-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,100 C16,0 30,100 100,0" fill="none" stroke="#d4f060" strokeWidth="2" strokeDasharray="100" strokeDashoffset="0" />
+            </svg>
+            <div className="flex justify-between w-full relative z-10 font-mono text-[9px] text-[#f0eee8]/20">
+              <span>INBOUND [0.0]</span>
+              <span>OUTBOUND [1.0]</span>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  };
+
   return (
-    <section id="platform-specs" className="relative py-24 md:py-32 bg-[#050505] overflow-hidden border-t border-white/[0.04]">
-      {/* Visual background noise */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30 pointer-events-none" />
-      <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-emerald-500/[0.02] blur-[140px] pointer-events-none rounded-full" />
+    <section id="platform-specs" className="relative py-28 md:py-36 bg-[#030305] overflow-hidden border-t border-white/5 font-['DM_Sans',sans-serif]">
+      {/* High-End Atmospheric Production Depth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-[#d4f060]/[0.02] blur-[150px] pointer-events-none rounded-full" />
+      <div className="absolute right-[-10%] top-10 w-[400px] h-[400px] bg-white/[0.01] blur-[120px] pointer-events-none rounded-full" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-          {/* Specs List (Left) */}
-          <div className="lg:col-span-5 space-y-8">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-[60px] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          
+          {/* Left Text Column & Feature Grids */}
+          <div className="lg:col-span-5 space-y-12">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-400">
-                <Settings className="w-3.5 h-3.5" />
-                Technical Blueprint
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight font-sans">
-                Built for Enterprise AI Governance.
+              <span className="inline-flex items-center gap-2 font-medium text-[11px] uppercase tracking-[0.3em] text-[#d4f060] before:content-[''] before:w-4 before:h-[1px] before:bg-[#d4f060]">
+                <Sparkles className="w-3 h-3 opacity-80" />
+                The Design Architecture
+              </span>
+              <h2 className="font-['Syne',sans-serif] text-[38px] sm:text-[54px] font-extrabold tracking-[-0.03em] text-white leading-[1.05]">
+                Where Pure Intent <br />
+                <span className="text-transparent [-webkit-text-stroke:1px_rgba(240,238,232,0.35)]">Meets Form.</span>
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-sans">
-                Whether your machine learning workloads operate in dedicated cloud infrastructure or within highly isolated data networks, Ryvane integrates seamlessly into your security workflow.
+              <p className="text-[15px] sm:text-[16px] text-[#f0eee8]/45 leading-relaxed font-light pt-2">
+                We design flawless structural systems. By uniting strict spatial mathematics with elegant aesthetic principles, Pen & Pixel engineers high-velocity brand canvases that feel effortless and look inevitable.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {/* Custom Interactive Architectural Grid Modules */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {specs.map((spec) => (
-                <div key={spec.name} className="space-y-2 p-4 rounded-lg bg-white/[0.01] border border-white/[0.05] hover:border-white/10 transition-colors">
-                  <div className="flex items-center gap-2">
-                    {spec.icon}
-                    <h3 className="font-sans text-xs font-semibold text-white tracking-wide">{spec.name}</h3>
+                <div 
+                  key={spec.name} 
+                  className="group space-y-4 p-6 rounded-[22px] bg-[#0c0c0f] border border-white/5 hover:border-[#d4f060]/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-300 relative overflow-hidden before:content-[''] before:absolute before:left-0 before:top-0 before:w-[2px] before:h-full before:bg-[#d4f060] before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 group-hover:before:scale-y-100"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#d4f060]/5 border border-[#d4f060]/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#d4f060] group-hover:text-[#030305]">
+                      {React.cloneElement(spec.icon as React.ReactElement, {
+                        className: "w-4 h-4 text-[#d4f060] group-hover:text-[#030305] transition-colors duration-300"
+                      })}
+                    </div>
+                    <h3 className="font-['Syne',sans-serif] text-[14px] font-bold text-white tracking-tight transition-colors duration-300 group-hover:text-[#d4f060]">
+                      {spec.name}
+                    </h3>
                   </div>
-                  <p className="text-xs text-zinc-400 leading-relaxed font-sans">{spec.detail}</p>
+                  <p className="text-[12.5px] text-[#f0eee8]/45 leading-relaxed font-light">{spec.detail}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* IDE Window Mockup (Right) */}
-          <div className="lg:col-span-7">
-            <div className="rounded-xl border border-white/[0.08] bg-white/[0.01] shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-mono text-xs text-left backdrop-blur-md">
-              {/* Tab Selector Header */}
-              <div className="px-4 py-1.5 bg-white/[0.03] border-b border-white/[0.06] flex items-center justify-between overflow-x-auto whitespace-nowrap">
-                <div className="flex gap-2">
-                  {tabs.map((tab) => {
-                    const isActive = activeTab === tab.id;
+          {/* Right Column: Live Luxury Canvas Preview Engine */}
+          <div className="lg:col-span-7 w-full">
+            <div className="rounded-[28px] border border-white/5 bg-[#0c0c0f] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden relative">
+              
+              {/* Studio Canvas Control Bar */}
+              <div className="px-6 py-4 bg-white/[0.01] border-b border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <Command className="w-3.5 h-3.5 text-[#d4f060]" />
+                  <span className="font-['Syne',sans-serif] text-[11px] font-bold uppercase tracking-[0.15em] text-white">
+                    Living Design Canvas
+                  </span>
+                </div>
+                
+                {/* Visual Framework Toggle Switches */}
+                <div className="flex bg-black/40 border border-white/5 rounded-xl p-1 gap-1">
+                  {(Object.keys(canvasLayers) as Array<keyof typeof canvasLayers>).map((key) => {
+                    const isActive = activeLayer === key;
                     return (
                       <button
-                        key={tab.id}
-                        onClick={() => setActiveTab(tab.id)}
-                        className={`px-3 py-2 text-[10px] uppercase tracking-wider transition-colors cursor-pointer border-b-2 font-mono flex items-center gap-1.5 ${isActive
-                            ? "border-emerald-400 text-white"
-                            : "border-transparent text-zinc-400 hover:text-white"
-                          }`}
+                        key={key}
+                        onClick={() => setActiveLayer(key)}
+                        className={`px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider rounded-lg transition-all duration-300 cursor-pointer ${
+                          isActive
+                            ? "bg-[#d4f060] text-[#030305] font-semibold shadow-lg"
+                            : "text-[#f0eee8]/45 hover:text-[#f0eee8]/80"
+                        }`}
                       >
-                        <Code className="w-3 h-3 text-zinc-600" />
-                        {tab.name}
+                        {key}
                       </button>
                     );
                   })}
                 </div>
-                <div className="flex items-center gap-2 pl-4 text-[9px] text-zinc-500 tracking-wider">
-                  <span>SCHEMA: {activeTab === "yaml" ? "YAML" : activeTab === "api" ? "JSON" : "LOG"}</span>
-                </div>
               </div>
 
-              {/* Code display area */}
-              <div className="p-5 min-h-[320px] bg-black/20 overflow-auto relative">
+              {/* Central Interactive Showroom Window */}
+              <div className="p-8 md:p-12 min-h-[400px] flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-black/30 relative overflow-hidden">
+                
+                {/* Absolute Floating UI Badges */}
+                <div className="absolute top-6 left-6 flex items-center gap-2 font-mono text-[10px] text-[#f0eee8]/30">
+                  <Eye className="w-3 h-3 text-[#d4f060]" />
+                  <span>{canvasLayers[activeLayer].badge}</span>
+                </div>
+                <div className="absolute top-6 right-6 font-mono text-[10px] text-[#f0eee8]/30">
+                  <span>{canvasLayers[activeLayer].metric}</span>
+                </div>
+
+                {/* Animated Layer Transition Portals */}
                 <AnimatePresence mode="wait">
-                  <motion.pre
-                    key={activeTab}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                    className="text-[11px] leading-relaxed font-mono whitespace-pre-wrap select-all"
+                  <motion.div
+                    key={activeLayer}
+                    initial={{ opacity: 0, scale: 0.96, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 1.04, y: -10 }}
+                    transition={{ duration: 0.4, cubicBezier: [0.16, 1, 0.3, 1] }}
+                    className="w-full flex flex-col items-center justify-center text-center space-y-8"
                   >
-                    {activeTab === "api" && (
-                      <code className="text-zinc-200">
-                        {`{`}
-                        <br />
-                        {`  `}
-                        <span className="text-emerald-400">{"\"assessment_id\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"ryvane-audit-node-7\""}</span>
-                        {`,`}
-                        <br />
-                        {`  `}
-                        <span className="text-emerald-400">{"\"target_pipeline\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"https://api.internal.inference-mesh\""}</span>
-                        {`,`}
-                        <br />
-                        {`  `}
-                        <span className="text-emerald-400">{"\"evaluation_policy\""}</span>
-                        {`: {`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"engine\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"adversarial-fuzzing-v3\""}</span>
-                        {`,`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"risk_profile\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"comprehensive-assurance\""}</span>
-                        {`,`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"evaluation_depth\""}</span>
-                        {`: `}
-                        <span className="text-amber-500">12</span>
-                        {`,`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"vectors\""}</span>
-                        {`: [`}
-                        <span className="text-zinc-400">{"\"jailbreak_bypass\""}</span>
-                        {`, `}
-                        <span className="text-zinc-400">{"\"context_poisoning\""}</span>
-                        {`]`}
-                        <br />
-                        {`  },`}
-                        <br />
-                        {`  `}
-                        <span className="text-emerald-400">{"\"isolation_layer\""}</span>
-                        {`: {`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"protocol\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"zero-egress-verification\""}</span>
-                        {`,`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"gateway\""}</span>
-                        {`: `}
-                        <span className="text-zinc-400">{"\"secure.mesh.internal\""}</span>
-                        {`,`}
-                        <br />
-                        {`    `}
-                        <span className="text-emerald-400">{"\"packet_delay_ms\""}</span>
-                        {`: `}
-                        <span className="text-amber-500">100</span>
-                        <br />
-                        {`  }`}
-                        <br />
-                        {`}`}
-                      </code>
-                    )}
+                    {/* Active Layer Graphics */}
+                    {canvasLayers[activeLayer].visualElement}
 
-                    {activeTab === "yaml" && (
-                      <code className="text-zinc-400">
-                        <span className="text-emerald-400">apiVersion</span>
-                        {`: security.ryvane.ai/v1alpha1\n`}
-                        <span className="text-emerald-400">kind</span>
-                        {`: AIValidationFramework\n`}
-                        <span className="text-emerald-400">metadata</span>
-                        {`:\n  `}
-                        <span className="text-emerald-400">name</span>
-                        {`: enterprise-audit-framework\n  `}
-                        <span className="text-emerald-400">namespace</span>
-                        {`: ryvane-governance\n`}
-                        <span className="text-emerald-400">spec</span>
-                        {`:\n  `}
-                        <span className="text-emerald-400">concurrencyLimit</span>
-                        {`: `}
-                        <span className="text-amber-500">32</span>
-                        {`\n  `}
-                        <span className="text-emerald-400">modelReference</span>
-                        {`:\n    `}
-                        <span className="text-emerald-400">name</span>
-                        {`: audit-pipeline-8b\n    `}
-                        <span className="text-emerald-400">source</span>
-                        {`: internal-secure-registry\n  `}
-                        <span className="text-emerald-400">containmentPolicy</span>
-                        {`:\n    `}
-                        <span className="text-emerald-400">airGappedMode</span>
-                        {`: `}
-                        <span className="text-white">true</span>
-                        {`\n    `}
-                        <span className="text-emerald-400">allowedIngressCIDR</span>
-                        {`:\n      - `}
-                        <span className="text-emerald-400">cidr</span>
-                        {`: 10.120.0.0/16\n        `}
-                        <span className="text-emerald-400">ports</span>
-                        {`: [`}
-                        <span className="text-amber-500">443</span>
-                        {`, `}
-                        <span className="text-amber-500">8443</span>
-                        {`]\n  `}
-                        <span className="text-emerald-400">remediationTrigger</span>
-                        {`: `}
-                        <span className="text-white">true</span>
-                      </code>
-                    )}
-
-                    {activeTab === "logs" && (
-                      <code className="text-zinc-500">
-                        {codeBlocks.logs.split("\n").map((line, idx) => (
-                          <div
-                            key={idx}
-                            className={
-                              line.includes("RISK STATE")
-                                ? "text-amber-500"
-                                : line.includes("REMEDIATION") || line.includes("DONE")
-                                  ? "text-emerald-400"
-                                  : "text-zinc-400"
-                            }
-                          >
-                            {line}
-                          </div>
-                        ))}
-                      </code>
-                    )}
-                  </motion.pre>
+                    {/* Metadata Readouts */}
+                    <div className="space-y-1 pt-4 border-t border-white/5 w-full">
+                      <h4 className="font-['Syne',sans-serif] text-[18px] font-bold text-white tracking-tight">
+                        {canvasLayers[activeLayer].title}
+                      </h4>
+                      <p className="text-[13px] font-mono tracking-wide text-[#d4f060]/70">
+                        {canvasLayers[activeLayer].subtitle}
+                      </p>
+                    </div>
+                  </motion.div>
                 </AnimatePresence>
               </div>
 
-              {/* Status footer bar */}
-              <div className="px-4 py-2 border-t border-white/[0.05] bg-black/40 flex items-center justify-between text-[9px] text-zinc-500 tracking-wider">
-                <span>BLUEPRINT: ACTIVE</span>
-                <span>VALIDATION RATIO: 100% SECURE</span>
+              {/* Luxury Studio Grid Footer */}
+              <div className="px-6 py-4 border-t border-white/5 bg-black/40 flex items-center justify-between font-mono text-[9px] text-[#f0eee8]/20 tracking-[0.12em]">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4f060] animate-pulse" />
+                  <span>CANVAS VIEWPORT // ACTIVE SYSTEM SYNCHRONIZATION</span>
+                </div>
+                <span className="hidden sm:inline text-right">SCALE v1.0.9</span>
               </div>
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
   );
