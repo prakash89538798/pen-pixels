@@ -24,22 +24,22 @@ export default function PlatformSpecs() {
 
   const specs: SpecItem[] = [
     {
-      icon: <Layers className="w-4 h-4" />,
+      icon: Layers,
       name: "Token-Driven Frameworks",
       detail: "Design values live in perfect, real-time synchronization with production codebases. Zero translational loss."
     },
     {
-      icon: <Layout className="w-4 h-4" />,
+      icon: Layers,
       name: "Sub-Pixel Optimization",
       detail: "Typography maps cleanly onto micro-grids for crisp and flawless readability across high-end display viewports.[cite: 2]"
     },
     {
-      icon: <Move className="w-4 h-4" />,
+      icon: Move,
       name: "Kinetic Micro-Interactions",
       detail: "Choreographed spatial feedback structures designed to maximize layout immersion and tactile response."
     },
     {
-      icon: <Terminal className="w-4 h-4" />,
+      icon: Terminal,
       name: "Decoupled Design Systems",
       detail: "We engineer flexible frameworks free from monolithic architectural bloat, built for infinite product scale.[cite: 2]"
     }
@@ -239,7 +239,7 @@ export default function PlatformSpecs() {
                     initial={{ opacity: 0, scale: 0.96, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 1.04, y: -10 }}
-                    transition={{ duration: 0.4, cubicBezier: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full flex flex-col items-center justify-center text-center space-y-8"
                   >
                     {/* Active Layer Graphics */}
