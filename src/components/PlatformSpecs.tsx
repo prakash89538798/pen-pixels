@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Layout, Layers, Terminal, Sparkles, Move, Eye, Command } from "lucide-react";
 
 interface SpecItem {
-  icon: React.ReactElement;
+  icon: React.ComponentType<{ className?: string }>;
   name: string;
   detail: string;
 }
@@ -172,10 +172,9 @@ export default function PlatformSpecs() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-[#d4f060]/5 border border-[#d4f060]/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#d4f060] group-hover:text-[#030305]">
-                      {React.cloneElement(spec.icon, {
-  className:
-    "w-4 h-4 text-[#d4f060] group-hover:text-[#030305] transition-colors duration-300",
-})}
+                      <spec.icon
+  className="w-4 h-4 text-[#d4f060] group-hover:text-[#030305] transition-colors duration-300"
+/>
                     </div>
                     <h3 className="font-['Syne',sans-serif] text-[14px] font-bold text-white tracking-tight transition-colors duration-300 group-hover:text-[#d4f060]">
                       {spec.name}
