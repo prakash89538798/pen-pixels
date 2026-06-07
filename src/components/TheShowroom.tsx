@@ -164,7 +164,7 @@ export default function TheShowroom() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
-                  transition={{ duration: 0.7, cubicBezier: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center ${
                     isEven ? "" : "lg:flex-row-reverse"
                   }`}
