@@ -20,7 +20,7 @@ interface ServiceItem {
   description: string;
   quote: string;
   imageSrc: string;
-  tintColor: string; // The smoke color accent (e.g., gold, charcoal, deep crimson)
+  tintColor: string;
 }
 
 interface ServiceRowProps {
@@ -38,19 +38,19 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full min-h-[450px] md:min-h-[550px] flex items-center justify-center overflow-hidden border-b border-white/[0.04] py-12 px-4 group cursor-pointer"
+      className="relative w-full min-h-[500px] md:min-h-[650px] flex items-center justify-center overflow-hidden border-b border-white/[0.04] py-12 px-4 group cursor-pointer"
     >
       {/* BACKGROUND IMAGE WITH IMMERSIVE SMOKE MASK */}
       <div className="absolute inset-0 z-0 flex items-center justify-center transition-transform duration-1000 ease-out group-hover:scale-105">
         <div className="relative w-full h-full max-w-[600px] md:max-w-[700px]">
-          {/* Main Character Image */}
+          {/* Main Cinematic Image */}
           <img
             src={service.imageSrc}
             alt={service.title}
-            className="w-full h-full object-cover object-center grayscale contrast-125 brightness-[0.4] transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-[0.5]"
+            className="w-full h-full object-cover object-center grayscale contrast-150 brightness-[0.25] transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-[0.55]"
           />
           
-          {/* Radial Smoke Tint Gradient matching the uploaded image */}
+          {/* Radial Smoke Tint Gradient */}
           <div 
             className="absolute inset-0 mix-blend-screen opacity-60 transition-opacity duration-700 group-hover:opacity-80"
             style={{
@@ -89,6 +89,12 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
               </span>
               <span>{service.tag}</span>
             </div>
+            
+            {/* Service Count Detail Added below Tag */}
+            <p className="text-[10px] font-mono tracking-[0.3em] text-zinc-600 uppercase">
+              Premium Service
+            </p>
+
             <h3 className="text-2xl md:text-3xl font-light font-serif tracking-wider text-zinc-200 uppercase pt-2">
               {service.title}
             </h3>
@@ -97,13 +103,13 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
             </p>
           </div>
 
-          {/* CENTER BRANDING WATERMARK */}
+          {/* CENTER BRANDING WATERMARK - UPGRADED TEXT */}
           <div className="hidden md:flex md:col-span-4 flex-col items-center justify-center select-none pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-500">
             <span className="font-serif tracking-[0.4em] text-sm text-zinc-400 uppercase">
-              CAPABILITIES
+              PEN & PIXELS
             </span>
             <span className="font-serif tracking-[0.2em] text-[10px] text-zinc-500 mt-1">
-              PRODUCTIONS
+              CREATIVE STUDIO
             </span>
           </div>
 
@@ -126,64 +132,175 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
 };
 
 export default function CapabilitiesServices() {
-  // Configured data aligning perfectly to your features mapped to the template aesthetic
   const digitalServices: ServiceItem[] = [
     {
-      id: "web-dev",
-      icon: <Laptop className="w-3 h-3" />,
-      tag: "Web Systems",
-      title: "Thomas Shelby",
-      subtitle: "Web Design & Dev",
-      quote: "Everyone's a whore, Grace. We just sell different parts of ourselves.",
-      description: "Fast, dangerously optimized, and ruthlessly tactical digital architectures built to command attention.",
-      imageSrc: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe", // Replace with high-contrast portrait
-      tintColor: "rgba(115, 115, 115, 0.45)", // Charcoal smoke
-    },
-    {
-      id: "ui-ux",
-      icon: <Layers className="w-3 h-3" />,
-      tag: "UI/UX Architecture",
-      title: "Alfie Solomons",
-      subtitle: "Interface Design",
-      quote: "Intelligence is a very valuable thing, innit, my friend? And usually it comes far too fucking late.",
-      description: "Meticulous user pathways. Designing sharp interfaces with absolute precision and hidden depth.",
-      imageSrc: "https://images.unsplash.com/photo-1634973357973-f2ed255753e1",
-      tintColor: "rgba(217, 119, 6, 0.35)", // Amber/Gold smoke
-    },
-    {
-      id: "brand-identity",
+      id: "logo-design",
       icon: <Compass className="w-3 h-3" />,
       tag: "Brand Identity",
-      title: "Polly Shelby",
-      subtitle: "Identity Design",
-      quote: "Rule one. Don't punch above your weight.",
-      description: "Establishing dominant visual systems and ironclad corporate identities that survive generations.",
-      imageSrc: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7",
-      tintColor: "rgba(153, 27, 27, 0.4)", // Crimson smoke
+      title: "Logo Design",
+      subtitle: "Visual Identity",
+      quote: "A logo speaks before your company does.",
+      description:
+        "Distinctive logos crafted to build trust, recognition, and a memorable brand presence.",
+      imageSrc: "https://images.unsplash.com/photo-1626785774573-4b799315345d",
+      tintColor: "rgba(168,85,247,0.4)",
+    },
+    {
+      id: "branding",
+      icon: <Zap className="w-3 h-3" />,
+      tag: "Brand Systems",
+      title: "Brand Guidelines",
+      subtitle: "Complete Identity",
+      quote: "Consistency transforms brands into institutions.",
+      description:
+        "Comprehensive visual systems including typography, colors, imagery, and brand standards.",
+      imageSrc: "https://images.unsplash.com/photo-1558655146-d09347e92766",
+      tintColor: "rgba(245,158,11,0.4)",
+    },
+    {
+      id: "landing-pages",
+      icon: <Laptop className="w-3 h-3" />,
+      tag: "Web Experiences",
+      title: "Landing Pages",
+      subtitle: "Conversion Focused",
+      quote: "Every click should lead somewhere valuable.",
+      description:
+        "Strategic landing pages designed to convert visitors into customers through modern aesthetics.",
+      imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+      tintColor: "rgba(37,99,235,0.4)",
+    },
+    {
+      id: "ui-design",
+      icon: <Layers className="w-3 h-3" />,
+      tag: "UI / UX Design",
+      title: "Website & App UI",
+      subtitle: "Digital Products",
+      quote: "Great design feels effortless.",
+      description:
+        "Beautiful user interfaces and seamless experiences for web applications and mobile products.",
+      imageSrc: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
+      tintColor: "rgba(14,165,233,0.4)",
+    },
+    {
+      id: "social-media",
+      icon: <Megaphone className="w-3 h-3" />,
+      tag: "Content Design",
+      title: "Social Media Creatives",
+      subtitle: "Campaign Assets",
+      quote: "Design is the difference between seen and ignored.",
+      description:
+        "Instagram posts, carousels, advertisements, banners, and social campaigns built to engage audiences.",
+      imageSrc: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb",
+      tintColor: "rgba(236,72,153,0.4)",
+    },
+    {
+      id: "posters",
+      icon: <FileText className="w-3 h-3" />,
+      tag: "Marketing Design",
+      title: "Flyers & Posters",
+      subtitle: "Print & Promotion",
+      quote: "Attention is earned. Design decides who gets it.",
+      description:
+        "Eye-catching promotional materials, event posters, and marketing collateral that command attention.",
+      imageSrc: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+      tintColor: "rgba(220,38,38,0.4)",
+    },
+    {
+      id: "packaging",
+      icon: <Zap className="w-3 h-3" />,
+      tag: "Product Branding",
+      title: "Packaging Design",
+      subtitle: "Retail Experience",
+      quote: "Products are judged before they are opened.",
+      description:
+        "Premium packaging systems that elevate products and create memorable customer experiences.",
+      imageSrc: "https://images.unsplash.com/photo-1586880244406-556ebe35f282",
+      tintColor: "rgba(249,115,22,0.4)",
+    },
+    {
+      id: "presentation",
+      icon: <FileText className="w-3 h-3" />,
+      tag: "Business Design",
+      title: "Pitch Decks",
+      subtitle: "Presentations",
+      quote: "Ideas win when they're presented beautifully.",
+      description:
+        "Investor presentations, startup pitch decks, and executive-level business storytelling.",
+      imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      tintColor: "rgba(34,197,94,0.4)",
+    },
+    {
+      id: "motion-design",
+      icon: <Layers className="w-3 h-3" />,
+      tag: "Motion Graphics",
+      title: "Animated Visuals",
+      subtitle: "Motion Design",
+      quote: "Movement turns attention into emotion.",
+      description:
+        "Logo animations, motion graphics, social media reels, and engaging visual storytelling.",
+      imageSrc: "https://images.unsplash.com/photo-1574717024453-354056dcf6b0",
+      tintColor: "rgba(6,182,212,0.4)",
+    },
+    {
+      id: "print-design",
+      icon: <FileText className="w-3 h-3" />,
+      tag: "Corporate Design",
+      title: "Business Stationery",
+      subtitle: "Print Identity",
+      quote: "The smallest details leave the strongest impressions.",
+      description:
+        "Business cards, brochures, catalogs, menus, letterheads, and premium print assets.",
+      imageSrc: "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
+      tintColor: "rgba(120,113,108,0.4)",
     },
   ];
 
   return (
     <section className="bg-black text-white py-24 md:py-36 overflow-hidden select-none">
-      {/* HEADER SECTION INITIATING THE THEME */}
+      {/* HEADER SECTION */}
       <div className="max-w-4xl mx-auto text-center px-6 mb-20 md:mb-32 space-y-4">
         <span className="font-serif tracking-[0.5em] text-xs text-zinc-500 uppercase block">
           ESTABLISHED CAPABILITIES
         </span>
+        
+        {/* Updated Section Heading */}
         <h2 className="text-4xl md:text-6xl font-light font-serif tracking-wide text-zinc-100">
-          Designed to elevate your brand.
+          Design. Identity. Impact.
         </h2>
+        
         <div className="w-12 h-[1px] bg-zinc-700 mx-auto my-6" />
+        
+        {/* Updated Subtitle */}
         <p className="text-zinc-500 font-serif italic text-sm md:text-base max-w-xl mx-auto">
-          "From digital control rooms to physical deployment assets, we engineer modern experiences."
+          "We craft brands, interfaces, campaigns, and visual experiences that leave a lasting impression."
         </p>
       </div>
 
-      {/* CONTINUOUS CINEMATIC SECTIONS */}
+      {/* CONTINUOUS CINEMATIC MAPPED SECTIONS */}
       <div className="w-full">
         {digitalServices.map((service) => (
           <ServiceRow key={service.id} service={service} />
         ))}
+      </div>
+
+      {/* FOOTER CALL-TO-ACTION SECTION */}
+      <div className="text-center mt-24">
+        <button
+          className="
+            border border-white/10
+            px-8 py-4
+            uppercase
+            tracking-[0.3em]
+            text-xs
+            text-zinc-300
+            hover:bg-white
+            hover:text-black
+            transition-all
+            duration-500
+          "
+        >
+          Start Your Project
+        </button>
       </div>
     </section>
   );
