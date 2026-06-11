@@ -32,27 +32,27 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full min-h-[500px] md:min-h-[650px] flex items-center justify-center overflow-hidden border-b border-white/[0.04] py-12 px-4 group cursor-pointer"
+      {/* Reduced minimum height and padding to pull components closer together vertically */}
+      className="relative w-full min-h-[380px] md:min-h-[460px] flex items-center justify-center overflow-hidden border-b border-white/[0.04] py-6 md:py-10 px-4 group cursor-pointer"
     >
       {/* BACKGROUND IMAGE WITH IMMERSIVE SMOKE MASK */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center transition-transform duration-1000 ease-out group-hover:scale-105">
-        <div className="relative w-full h-full max-w-[600px] md:max-w-[700px]">
-          {/* Main Cinematic Image */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center transition-transform duration-1000 ease-out group-hover:scale-102">
+        <div className="relative w-full h-full max-w-[650px] md:max-w-[800px]">
           <img
             src={service.imageSrc}
             alt={service.title}
-            className="w-full h-full object-cover object-center grayscale contrast-150 brightness-[0.25] transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-[0.55]"
+            className="w-full h-full object-cover object-center grayscale contrast-150 brightness-[0.22] transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-[0.45]"
           />
           
           {/* Radial Smoke Tint Gradient */}
           <div 
-            className="absolute inset-0 mix-blend-screen opacity-60 transition-opacity duration-700 group-hover:opacity-80"
+            className="absolute inset-0 mix-blend-screen opacity-50 transition-opacity duration-700 group-hover:opacity-75"
             style={{
               background: `radial-gradient(circle at center, ${service.tintColor} 0%, transparent 65%)`
             }}
@@ -69,7 +69,7 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
         {isHovered && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.25 }}
+            animate={{ opacity: 0.2 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 pointer-events-none mix-blend-screen bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent blur-xl"
           />
@@ -77,12 +77,12 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
       </AnimatePresence>
 
       {/* PEAKY BLINDERS INSPIRED FINE-LINE CONTAINER */}
-      <div className="relative z-10 w-full max-w-5xl border border-white/10 md:px-12 px-6 py-10 md:py-14 bg-black/10 backdrop-blur-[2px] transition-colors duration-500 group-hover:border-white/20">
+      <div className="relative z-10 w-full max-w-5xl border border-white/10 md:px-12 px-6 py-8 md:py-10 bg-black/20 backdrop-blur-[1px] transition-colors duration-500 group-hover:border-white/20">
         
         <div className="grid md:grid-cols-12 gap-6 items-center">
           
           {/* LEFT METADATA BLOCK */}
-          <div className="md:col-span-4 space-y-2 text-left">
+          <div className="md:col-span-4 space-y-1.5 text-left">
             <div className="flex items-center gap-3 text-zinc-500 font-mono text-xs tracking-widest uppercase">
               <span className="p-1.5 bg-white/5 border border-white/10 rounded">
                 {service.icon}
@@ -90,12 +90,12 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
               <span>{service.tag}</span>
             </div>
             
-            {/* Service Count Detail Added below Tag */}
-            <p className="text-[10px] font-mono tracking-[0.3em] text-zinc-600 uppercase">
+            <p className="text-[9px] font-mono tracking-[0.3em] text-zinc-600 uppercase">
               Premium Service
             </p>
 
-            <h3 className="text-2xl md:text-3xl font-light font-serif tracking-wider text-zinc-200 uppercase pt-2">
+            {/* Changed font-light to font-bold / font-black for a strong, premium display look */}
+            <h3 className="text-3xl md:text-4xl font-black font-serif tracking-wide text-zinc-100 uppercase pt-1 leading-tight transition-colors duration-300 group-hover:text-white">
               {service.title}
             </h3>
             <p className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
@@ -103,20 +103,20 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
             </p>
           </div>
 
-          {/* CENTER BRANDING WATERMARK - UPGRADED TEXT */}
-          <div className="hidden md:flex md:col-span-4 flex-col items-center justify-center select-none pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-500">
-            <span className="font-serif tracking-[0.4em] text-sm text-zinc-400 uppercase">
+          {/* CENTER BRANDING WATERMARK */}
+          <div className="hidden md:flex md:col-span-4 flex-col items-center justify-center select-none pointer-events-none opacity-20 group-hover:opacity-45 transition-opacity duration-500">
+            <span className="font-serif tracking-[0.4em] text-xs text-zinc-400 uppercase">
               PEN & PIXELS
             </span>
-            <span className="font-serif tracking-[0.2em] text-[10px] text-zinc-500 mt-1">
+            <span className="font-serif tracking-[0.2em] text-[9px] text-zinc-500 mt-1">
               CREATIVE STUDIO
             </span>
           </div>
 
           {/* RIGHT QUOTE / DESCRIPTION BLOCK */}
-          <div className="md:col-span-4 text-left md:text-right space-y-4 md:ml-auto max-w-xs">
+          <div className="md:col-span-4 text-left md:text-right space-y-3 md:ml-auto max-w-xs">
             <p className="font-serif italic text-sm md:text-base text-zinc-300 leading-relaxed relative">
-              <span className="text-xl text-zinc-500 font-serif absolute -top-3 -left-4">“</span>
+              <span className="text-xl text-zinc-600 font-serif absolute -top-3 -left-4">“</span>
               {service.quote}
             </p>
             <p className="text-xs text-zinc-500 leading-relaxed font-sans font-light">
@@ -256,35 +256,33 @@ export default function CapabilitiesServices() {
   ];
 
   return (
-    <section className="bg-black text-white py-24 md:py-36 overflow-hidden select-none">
+    <section className="bg-black text-white py-20 md:py-28 overflow-hidden select-none">
       {/* HEADER SECTION */}
-      <div className="max-w-4xl mx-auto text-center px-6 mb-20 md:mb-32 space-y-4">
+      <div className="max-w-4xl mx-auto text-center px-6 mb-14 md:mb-20 space-y-4">
         <span className="font-serif tracking-[0.5em] text-xs text-zinc-500 uppercase block">
           ESTABLISHED CAPABILITIES
         </span>
         
-        {/* Updated Section Heading */}
-        <h2 className="text-4xl md:text-6xl font-light font-serif tracking-wide text-zinc-100">
+        <h2 className="text-4xl md:text-6xl font-bold font-serif tracking-wide text-zinc-100">
           Design. Identity. Impact.
         </h2>
         
-        <div className="w-12 h-[1px] bg-zinc-700 mx-auto my-6" />
+        <div className="w-12 h-[1px] bg-zinc-800 mx-auto my-4" />
         
-        {/* Updated Subtitle */}
         <p className="text-zinc-500 font-serif italic text-sm md:text-base max-w-xl mx-auto">
           "We craft brands, interfaces, campaigns, and visual experiences that leave a lasting impression."
         </p>
       </div>
 
       {/* CONTINUOUS CINEMATIC MAPPED SECTIONS */}
-      <div className="w-full">
+      <div className="w-full flex flex-col">
         {digitalServices.map((service) => (
           <ServiceRow key={service.id} service={service} />
         ))}
       </div>
 
       {/* FOOTER CALL-TO-ACTION SECTION */}
-      <div className="text-center mt-24">
+      <div className="text-center mt-20">
         <button
           className="
             border border-white/10
