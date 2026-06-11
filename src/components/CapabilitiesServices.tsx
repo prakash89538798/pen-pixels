@@ -38,7 +38,7 @@ const ServiceRow = ({ service }: ServiceRowProps) => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      {/* Reduced minimum height and padding to pull components closer together vertically */}
+      {/* Bringing all components closer together vertically */}
       className="relative w-full min-h-[380px] md:min-h-[460px] flex items-center justify-center overflow-hidden border-b border-white/[0.04] py-6 md:py-10 px-4 group cursor-pointer"
     >
       {/* BACKGROUND IMAGE WITH IMMERSIVE SMOKE MASK */}
