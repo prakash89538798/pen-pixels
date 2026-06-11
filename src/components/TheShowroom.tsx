@@ -439,10 +439,12 @@ function InteractiveImageContainer({ src, title }: { src: string; title: string 
 // ============================================================================
 // --- PART 2 PREMIUM EXTRA: ADVANCED CYBER-DIAL ENGINE (HULY INSPIRED) ---
 // ============================================================================
+// ✅ PASTE THIS REWRITTEN BLOCK INSTEAD:
 interface DialEngineProps {
   items: VaultItem[];
   selectedIndex: number;
-  setSelectedIndex: (idx: number) => void;
+  /* Fixed: Changed type definition to accept functional state updates */
+  setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
   hoveredIndex: number | null;
   setHoveredIndex: (idx: number | null) => void;
 }
@@ -507,21 +509,18 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
     }
   };
 
-  // Angular parameters matching the image layout perspective
-  const totalAngleSpan = 140; /* The arc size housing the items */
+  const totalAngleSpan = 140;
   const angleStep = totalAngleSpan / (items.length - 1);
-  const baseOffsetAngle = -70; /* Centers the arc layout */
+  const baseOffsetAngle = -70;
 
   return (
     <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center select-none">
       
-      {/* Absolute Header Title Plate inside the layout */}
       <div className="absolute top-0 left-4 font-mono text-[11px] text-white/30 tracking-widest uppercase">
         Customize Huly Dial <br />
         <span className="text-white/10 text-[10px]">Optimise your quick access menu</span>
       </div>
 
-      {/* --- MASTER PERSPECTIVE PARALLAX CONTAINER MESH --- */}
       <motion.div
         ref={dialRef}
         onMouseMove={handleDialMouseMove}
@@ -534,26 +533,19 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
         className="w-[90%] h-[90%] rounded-full relative flex items-center justify-center transition-shadow duration-500"
       >
         
-        {/* Dynamic Target Hub (Central White Wheel) */}
         <div className="absolute w-[180px] h-[180px] rounded-full bg-[#e3e3e6] shadow-[0_15px_45px_rgba(0,0,0,0.9),inset_0_-4px_12px_rgba(0,0,0,0.2),inset_0_4px_12px_rgba(255,255,255,0.6)] flex items-center justify-center z-30 border border-white/20 transform translate-z-[40px]">
           <div className="w-[84%] h-[84%] rounded-full border-2 border-dashed border-black/10 flex items-center justify-center relative">
-            
-            {/* Inner Core Accent Buttons */}
             <div className="flex flex-col space-y-1 items-center justify-center">
               <div className="w-5 h-[2px] bg-neutral-800 rounded-full" />
               <div className="w-5 h-[2px] bg-neutral-800 rounded-full" />
               <div className="w-5 h-[2px] bg-neutral-800 rounded-full" />
             </div>
-
-            {/* Simulated Edge-Knurl Ridges */}
             <div className="absolute inset-0 rounded-full border border-black/[0.05] animate-spin-slow pointer-events-none" />
           </div>
         </div>
 
-        {/* Outer Perimeter Core Orbit Ring Track */}
         <div className="absolute w-[320px] h-[320px] rounded-full border border-white/[0.05] bg-gradient-to-b from-white/[0.02] to-transparent z-10 pointer-events-none" />
 
-        {/* --- BACKDROP RADIAL SHADOW SECTOR SLICE --- */}
         {(() => {
           const currentActiveAngle = baseOffsetAngle + (selectedIndex * angleStep);
           return (
@@ -563,7 +555,6 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
               transition={{ type: "spring", stiffness: 140, damping: 24 }}
               style={{ originX: "50%", originY: "50%" }}
             >
-              {/* Mesh Slice Glow Overlay */}
               <div 
                 className="absolute top-1/2 left-1/2 w-[150px] h-[80px] bg-white/[0.04] border-t border-b border-r border-white/10 rounded-r-full blur-[2px]"
                 style={{
@@ -575,17 +566,12 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
           );
         })()}
 
-        {/* --- FLOATING FLOOD TERMINAL LIST NODES --- */}
         <div className="absolute inset-0 w-full h-full z-20">
           {items.map((item, idx) => {
             const isSelected = selectedIndex === idx;
             const isHovered = hoveredIndex === idx;
-            
-            // Map indexes out smoothly to the right side of the visual dial
             const currentAngle = baseOffsetAngle + (idx * angleStep);
-            
-            // Convert angle structures to Cartesian tracking positions
-            const radius = 210; /* Distance metric out from center hub */
+            const radius = 210;
             const angleInRad = (currentAngle * Math.PI) / 180;
             const xPos = Math.cos(angleInRad) * radius;
             const yPos = Math.sin(angleInRad) * radius;
@@ -598,14 +584,12 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
                   transform: `translate(calc(-50% + ${xPos}px), calc(-50% + ${yPos}px))`,
                 }}
               >
-                {/* Horizontal link connection trace lines */}
                 <div 
                   className={`h-[1px] origin-left transition-all duration-500 absolute right-full top-1/2 -translate-y-1/2 ${
                     isSelected ? "bg-white/20 w-8" : "bg-transparent w-4"
                   }`} 
                 />
 
-                {/* Tactile Capsule Menu Target Node */}
                 <button
                   onClick={() => setSelectedIndex(idx)}
                   onMouseEnter={() => setHoveredIndex(idx)}
@@ -618,14 +602,12 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
                       : "bg-black/40 border-white/[0.03] text-neutral-400 opacity-60"
                   }`}
                 >
-                  {/* Embedded Custom Section Icon */}
                   <div className={`p-1.5 rounded-lg border transition-colors duration-300 ${
                     isSelected ? "bg-white/10 border-white/20 text-[#d4f060]" : "bg-black/40 border-white/5 text-neutral-400"
                   }`}>
                     {renderIcon(item.iconType, "w-4 h-4")}
                   </div>
 
-                  {/* Clean text element nodes */}
                   <span className="text-[13px] font-medium tracking-tight flex-1">
                     {item.iconType === "chat" ? "Design Chat" : 
                      item.iconType === "tasks" ? "Tasks Index" : 
@@ -633,7 +615,6 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
                      item.iconType === "notes" ? "Meeting notes" : "Sale marketing"}
                   </span>
 
-                  {/* Arrow Flag Indicator */}
                   <ArrowUpRight className={`w-3.5 h-3.5 opacity-0 transition-all duration-300 transform ${
                     isSelected ? "opacity-100 translate-x-0" : "group-node:opacity-40 -translate-x-1"
                   }`} />
@@ -643,7 +624,7 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
           })}
         </div>
 
-        {/* --- DECORATIVE PERIMETER CYBER BUTTONS --- */}
+        {/* --- FIXED CYBER ACCENT BUTTONS --- */}
         <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 flex flex-col items-center space-y-4 bg-white/[0.02] border border-white/[0.05] rounded-full p-2 backdrop-blur-md z-30">
           <button 
             onClick={() => setSelectedIndex((prev: number) => Math.max(0, prev - 1))}
@@ -664,7 +645,6 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
 
       </motion.div>
 
-      {/* Decorative Outer Dial Control Footer Actions */}
       <div className="absolute bottom-0 right-4 flex gap-3 z-30">
         <button className="px-5 py-2.5 rounded-xl text-xs font-medium text-neutral-400 hover:text-white transition-colors cursor-pointer">
           Cancel
