@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import { Sparkles, ArrowUpRight, Command, Grid, Eye, ChevronUp, ChevronDown, Plus } from "lucide-react";
 
@@ -14,7 +14,6 @@ interface Project {
   challenge: string;
   delivered: string[];
   image: string;
-  
 }
 
 interface VaultItem {
@@ -28,7 +27,7 @@ interface VaultItem {
 
 export default function TheShowroom() {
   const [activeFilter, setActiveFilter] = useState<string>("all");
-  const [selectedVaultIndex, setSelectedVaultIndex] = useState<number>(2); // Default to Project Management slice
+  const [selectedVaultIndex, setSelectedVaultIndex] = useState<number>(2); /* Default to Project Management slice */
   const [hoveredVaultIndex, setHoveredVaultIndex] = useState<number | null>(null);
 
   // Core Projects Dataset
@@ -509,9 +508,9 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
   };
 
   // Angular parameters matching the image layout perspective
-  const totalAngleSpan = 140; // The arc size housing the items
+  const totalAngleSpan = 140; /* The arc size housing the items */
   const angleStep = totalAngleSpan / (items.length - 1);
-  const baseOffsetAngle = -70; // Centers the arc layout
+  const baseOffsetAngle = -70; /* Centers the arc layout */
 
   return (
     <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center select-none">
@@ -555,7 +554,6 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
         <div className="absolute w-[320px] h-[320px] rounded-full border border-white/[0.05] bg-gradient-to-b from-white/[0.02] to-transparent z-10 pointer-events-none" />
 
         {/* --- BACKDROP RADIAL SHADOW SECTOR SLICE --- */}
-        {/* Computes angle transforms to track the active slice component */}
         {(() => {
           const currentActiveAngle = baseOffsetAngle + (selectedIndex * angleStep);
           return (
@@ -578,7 +576,6 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
         })()}
 
         {/* --- FLOATING FLOOD TERMINAL LIST NODES --- */}
-        {/* Structural Loop rendering node positions along coordinates */}
         <div className="absolute inset-0 w-full h-full z-20">
           {items.map((item, idx) => {
             const isSelected = selectedIndex === idx;
@@ -588,7 +585,7 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
             const currentAngle = baseOffsetAngle + (idx * angleStep);
             
             // Convert angle structures to Cartesian tracking positions
-            const radius = 210; // Distance metric out from center hub
+            const radius = 210; /* Distance metric out from center hub */
             const angleInRad = (currentAngle * Math.PI) / 180;
             const xPos = Math.cos(angleInRad) * radius;
             const yPos = Math.sin(angleInRad) * radius;
@@ -647,10 +644,9 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
         </div>
 
         {/* --- DECORATIVE PERIMETER CYBER BUTTONS --- */}
-        {/* Right Edge Action Control Plate matching the uploaded mock */}
         <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 flex flex-col items-center space-y-4 bg-white/[0.02] border border-white/[0.05] rounded-full p-2 backdrop-blur-md z-30">
           <button 
-            onClick={() => setSelectedIndex(prev => Math.max(0, prev - 1))}
+            onClick={() => setSelectedIndex((prev: number) => Math.max(0, prev - 1))}
             className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
           >
             <ChevronUp className="w-4 h-4" />
@@ -659,7 +655,7 @@ function InteractiveDialEngine({ items, selectedIndex, setSelectedIndex, hovered
             {selectedIndex + 1}
           </div>
           <button 
-            onClick={() => setSelectedIndex(prev => Math.min(items.length - 1, prev + 1))}
+            onClick={() => setSelectedIndex((prev: number) => Math.min(items.length - 1, prev + 1))}
             className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
           >
             <ChevronDown className="w-4 h-4" />
