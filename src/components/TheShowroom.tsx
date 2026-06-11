@@ -14,6 +14,7 @@ interface Project {
   challenge: string;
   delivered: string[];
   image: string;
+  
 }
 
 interface VaultItem {
